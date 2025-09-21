@@ -1,69 +1,60 @@
-# React + TypeScript + Vite
+# FitLife🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Pues es el front de la app jejejeje.
 
-Currently, two official plugins are available:
+## 📁 Estructura del proyecto
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Este proyecto sigue una estructura de carpetas modular y escalable, basada en principios de diseño de software.
 
-## Expanding the ESLint configuration
+- `src/`: Contiene todo el código fuente de la aplicación.
+  - `assets/`: Para archivos estáticos como imágenes, íconos y fuentes.
+  - `components/`: Almacena componentes de React **reutilizables** que pueden ser utilizados en cualquier parte de la aplicación (ej. `Button.jsx`, `Card.jsx`).
+  - `pages/`: Contiene componentes que representan **páginas completas** de la aplicación (ej. `HomePage.jsx`, `AboutPage.jsx`).
+  - `styles/`: Para estilos globales o variables de CSS.
+  - `utils/`: Funciones de ayuda y utilidades que no son componentes (ej. `formatDate.js`, `api.js`).
+  - `App.jsx`: El componente principal que orquesta todas las páginas.
+  - `main.jsx`: El punto de entrada de la aplicación.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Cómo empezar
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+**Clona el repositorio:**
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone https://github.com/JoelynCapyrby777/FitLife-Tungtungsitos.git
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+**Dirigete a la raiz del front :**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+cd frontend
 ```
+
+**Instala las dependencias:**
+
+```bash
+npm install
+```
+
+**Inicia el servidor de desarrollo:**
+
+```bash
+npm run dev
+```
+
+Tu aplicación estará disponible en `http://localhost:5173`.
+
+## 🛠️ Tecnologías
+
+- **React**
+- **Vite**
+- **[Mas tecnologías ki pondre al rato]**
+
+## 👥 Contribuciones
+
+Cuando suban cambios proyecto, por favor, sigue el siguiente flujo de trabajo:
+
+1. Vete a tu rama (**OJO CON TRABAJAR EN MAIN** 😡)(`git checkout nombre-de-tu-rama`).
+2. Haz tus cambios y commitea (`git commit -m 'feat: Añade nueva funcionalidad'`).
+3. Sube tus cambios a tu rama (`git push origin feature/nombre-de-tu-rama`).
+4. Crea un Pull Request.
+5. Luego el jefazo vera ki show , si esta bien o nadota
