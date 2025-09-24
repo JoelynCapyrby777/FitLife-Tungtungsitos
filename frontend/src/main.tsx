@@ -1,9 +1,17 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './App.tsx'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.jsx';
+import { BrowserRouter } from 'react-router-dom';
 
-createRoot(document.getElementById('root')!).render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
-)
+const rootElement = document.getElementById('root');
+if (rootElement) {
+  ReactDOM.createRoot(rootElement).render(
+    <React.StrictMode>
+      <BrowserRouter> 
+        <App />
+      </BrowserRouter>
+    </React.StrictMode>
+  );
+} else {
+  throw new Error("No se encontró el elemento 'root' en el documento.");
+}

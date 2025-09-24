@@ -1,12 +1,20 @@
-
+import AppRoutes from './routes/AppRoutes';
 
 function App() {
-
   return (
-    <>
-      <h1>Hola Mundo</h1>
-    </>
-  )
+    <div>
+      {/* Tu layout general, como el header y footer */}
+      <header>
+        <h1>Mi Proyecto</h1>
+      </header>
+      <main>
+        <AppRoutes /> 
+      </main>
+      <footer>
+        <p>© 2024</p>
+      </footer>
+    </div>
+  );
 }
 
-export default App
+export default App;
