@@ -1,0 +1,100 @@
+/* src/components/Input.css */
+
+.input-group {
+  display: flex;
+  text-align: start;
+  border-radius: 4px;
+  border: 1px solid var(--color-grey-200);
+  background-color: var(--color-white);
+  margin-top: 2rem;
+  position: relative; /* Clave para el posicionamiento de label y error */
+}
+
+.input-group__wrapper {
+  flex: auto;
+  width: 100%;
+}
+
+.input-group__label {
+  position: absolute;
+  top: 0.75rem; /* Posición inicial alineada con el padding del input */
+  left: 12px;
+  padding: 0 4px; /* Pequeño padding para que no se pegue al borde */
+  width: auto; /* Ancho automático para que no ocupe el 100% */
+  cursor: text;
+  font-size: var(--font-sm);
+  color: var(--color-grey-900);
+  background-color: var(--color-white); /* Para que cubra el borde del input al subir */
+
+  /* MEJORA: Transiciones más específicas para mejor rendimiento */
+  transition: transform 150ms ease-in-out, top 150ms ease-in-out;
+  transform-origin: top left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none; /* Evita que el label intercepte clics destinados al input */
+}
+
+.input-group__field {
+  padding: 1.25rem 12px 0.25rem 12px; /* pt-5 pb-1 px-3 */
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: var(--font-sm); /* Asegura que el tamaño de fuente sea consistente */
+  color: var(--color-grey-900);
+}
+
+/*
+  El label se mueve cuando el input está enfocado O
+  cuando NO se está mostrando el placeholder (es decir, tiene un valor).
+*/
+.input-group__field:focus + .input-group__label,
+.input-group__field:not(:placeholder-shown) + .input-group__label {
+  /* MEJORA: Usar 'top' para el movimiento vertical es más limpio que translateY */
+  transform: scale(0.75);
+  top: -0.6rem;
+}
+
+/* Modificador de error */
+.input-group--error {
+  border-color: var(--color-error);
+}
+
+.input-group__error-message {
+  position: absolute;
+  /* MEJORA: Posicionamiento robusto. Siempre estará arriba del input */
+  bottom: 100%;
+  margin-bottom: 8px; /* Espacio entre el input y el mensaje */
+  left: 0;
+  background-color: var(--color-error);
+  color: var(--color-white);
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: var(--font-xs);
+  white-space: nowrap;
+  z-index: 10;
+
+  /* MEJORA: Animación más fluida con transform */
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(10px); /* Empieza un poco más abajo */
+  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out, visibility 0.2s;
+}
+
+.input-group__error-message::after {
+  content: '';
+  position: absolute;
+  top: 100%; /* Se posiciona justo debajo del mensaje */
+  left: 15px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: var(--color-error) transparent transparent transparent;
+}
+
+/* Modificador para mostrar el error */
+.input-group--error .input-group__error-message {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0); /* Vuelve a su posición original */
+}
