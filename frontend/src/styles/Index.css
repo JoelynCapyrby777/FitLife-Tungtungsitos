@@ -1,0 +1,94 @@
+/* src/index.css */
+
+/*
+  ============================================
+  VARIABLES GLOBALES DEL SISTEMA DE DISEÑO
+  ============================================
+  
+*/
+
+:root {
+  /* === PALETA DE COLORES === */
+  /* Colores primarios y de marca */
+  --color-primary: #0d6efd;
+  --color-primary-light: #408cfd;
+  --color-primary-dark: #0a58ca;
+
+  /* Colores de feedback/estado */
+  --color-success: #198754;
+  --color-error: #dc3545;
+  --color-warning: #ffc107;
+
+  /* Paleta de grises y texto */
+  --color-text-primary: #212529; /* Casi negro para texto principal */
+  --color-text-secondary: #6c757d; /* Gris para subtítulos y texto de apoyo */
+  --color-border: #dee2e6;       /* Gris claro para bordes */
+  --color-background: #f8f9fa;   /* Gris muy claro para fondos de página */
+  --color-white: #fff;
+  --color-black: #000;
+
+
+  /* === TIPOGRAFÍA === */
+  --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-family-mono: 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+
+  --font-size-base: 1rem;      /* 16px por defecto */
+  --font-size-sm: 0.875rem;    /* 14px */
+  --font-size-lg: 1.25rem;     /* 20px */
+  --font-size-xl: 2rem;        /* 32px */
+
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+
+
+  /* === ESPACIADO (SPACING) === */
+  /* Úsalo para margin, padding, gap, etc. */
+  --spacing-xs: 0.25rem;  /* 4px */
+  --spacing-sm: 0.5rem;   /* 8px */
+  --spacing-md: 1rem;     /* 16px */
+  --spacing-lg: 1.5rem;   /* 24px */
+  --spacing-xl: 2rem;     /* 32px */
+  --spacing-xxl: 3rem;    /* 48px */
+
+
+  /* === BORDES Y SOMBRAS (Borders & Shadows) === */
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.5rem;  /* 8px, como tu form-container */
+  --border-radius-lg: 1rem;
+  --border-radius-pill: 50rem;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1); /* La que usaste en el form */
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+
+
+  /* === LAYOUT & Z-INDEX === */
+  --container-width: 1140px;
+  --header-height: 60px;
+
+  /* Para controlar las capas de la UI */
+  --z-index-dropdown: 1000;
+  --z-index-sticky: 1020;
+  --z-index-modal-backdrop: 1040;
+  --z-index-modal: 1050;
+  --z-index-popover: 1060;
+  --z-index-tooltip: 1070;
+
+
+  /* === TRANSICIONES === */
+  --transition-fast: all 150ms ease-in-out;
+  --transition-base: all 250ms ease-in-out;
+}
+
+/*
+  También puedes añadir algunos estilos globales básicos aquí,
+  como un reseteo o estilos para el body.
+*/
+body {
+  margin: 0;
+  font-family: var(--font-family-sans);
+  background-color: var(--color-background);
+  color: var(--color-text-primary);
+  line-height: 1.5;
+}
