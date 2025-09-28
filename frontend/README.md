@@ -47,10 +47,7 @@ src/
 
 **Clona el repositorio:**
 
-```
-git clone [https://github.com/JoelynCapyrby777/FitLife-Tungtungsitos.git](https://github.com/JoelynCapyrby777/FitLife-Tungtungsitos.git)
-
-```
+git clone https://github.com/JoelynCapyrby777/FitLife-Tungtungsitos.git
 
 **Dirígete a la raíz del front:**
 
