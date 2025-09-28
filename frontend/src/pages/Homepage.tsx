@@ -1,5 +1,5 @@
 import { type SetStateAction, useState } from 'react'; // 👈 Importa useState
-import Input from "../components/Input/Input"; // 👈 Importa tu componente Input
+import Input from "../components/ui/Input/Input"; // 👈 Importa tu componente Input
 
 function HomePage() {
   // Define un estado para manejar el valor del input

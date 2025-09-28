@@ -1,6 +1,6 @@
 // src/context/ToastContext.tsx
 import { createContext, useState, useContext, type ReactNode } from 'react';
-import Alert from '../components/Alert/Alert';
+import Alert from '../components/ui/Alert/Alert';
 
 type ToastType = 'success' | 'error' | 'warning' | 'info';
 

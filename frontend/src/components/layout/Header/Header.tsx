@@ -1,7 +1,7 @@
 // src/components/Header.tsx
 import React from 'react';
 import './Header.css';
-import logo from '../../assets/logotipo.svg'; // Asegúrate de que la ruta a tu logo sea correcta
+import logo from '../../../assets/logotipo.svg'; 
 
 const Header: React.FC = () => {
   return (

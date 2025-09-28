@@ -2,8 +2,7 @@
 import React from 'react';
 import './Alert.css';
 
-// Definimos los tipos de alerta que aceptaremos
-type AlertType = 'success' | 'error' | 'warning' | 'info';
+import type { AlertType } from '../../../types';
 
 interface AlertProps {
   children: React.ReactNode;

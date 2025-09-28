@@ -1,16 +1,10 @@
 import React, { useState } from 'react';
-import FormContainer from '../components/FormContainer/FormContainer';
-import Input from '../components/Input/Input';
-import Button from '../components/Button/Button';
+import FormContainer from '../components/ui/FormContainer/FormContainer';
+import Input from '../components/ui/Input/Input';
+import Button from '../components/ui/Button/Button';
 import { useToast } from '../context/ToastContext';
+import { checkEmailExists } from '../api/auth'; 
 
-// --- Simulación de API (sin cambios) ---
-const checkEmailExists = async (email: string): Promise<boolean> => {
-  await new Promise(resolve => setTimeout(resolve, 500));
-  const existingUsers = ['usuario.existente@gmail.com', 'test@dominio.com'];
-  return existingUsers.includes(email.toLowerCase());
-};
-// --- Fin de la simulación ---
 
 const LoginPage: React.FC = () => {
   const { showToast } = useToast();

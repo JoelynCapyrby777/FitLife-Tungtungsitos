@@ -1,16 +1,28 @@
 import { Routes, Route } from 'react-router-dom';
-import HomePage from '../pages/Homepage';
+import Layout from '../components/layout/Layout/Layout';
 import LoginPage from '../pages/LoginPage';
+import HomePage from '../pages/Homepage';
+// Suponiendo que creas estos archivos:
+// import RegisterPage from '../pages/RegisterPage';
+// import ProfilePage from '../pages/ProfilePage';
 
-
-function AppRoutes() {
+const AppRoutes = () => {
   return (
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/1" element={<LoginPage />} />
-      {/* Añade más rutas aquí en el futuro */}
-    </Routes>
+
+      <Routes>
+        {/* El Layout se aplica a todas estas rutas */}
+        <Route path="/" element={<Layout />}>
+          {/* ---- PÁGINAS ---- */}
+          
+    
+          <Route index element={<LoginPage />} />
+          <Route path='1' element={<HomePage />} />
+          
+        </Route>
+      </Routes>
+
   );
-}
+};
 
 export default AppRoutes;
+
