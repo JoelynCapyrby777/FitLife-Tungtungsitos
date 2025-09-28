@@ -1,56 +1,72 @@
-// src/pages/LoginPage.jsx
 import React, { useState } from 'react';
-import FormContainer from '../components/FormContainer';
-import Input from '../components/Input';
-import Button from '../components/Button';
+import FormContainer from '../components/FormContainer/FormContainer';
+import Input from '../components/Input/Input';
+import Button from '../components/Button/Button';
+import { useToast } from '../context/ToastContext';
 
-function LoginPage() {
-  const [email, setEmail] = useState('');
-  const [emailError, setEmailError] = useState('');
+// --- Simulación de API (sin cambios) ---
+const checkEmailExists = async (email: string): Promise<boolean> => {
+  await new Promise(resolve => setTimeout(resolve, 500));
+  const existingUsers = ['usuario.existente@gmail.com', 'test@dominio.com'];
+  return existingUsers.includes(email.toLowerCase());
+};
+// --- Fin de la simulación ---
 
-  const handleEmailChange = (event) => {
-    const value = event.target.value;
-    setEmail(value);
-    if (emailError) {
-      setEmailError('');
-    }
-  };
+const LoginPage: React.FC = () => {
+  const { showToast } = useToast();
+  const [email, setEmail] = useState<string>('');
+  const [errorForInput, setErrorForInput] = useState<string>('');
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (!email) {
-      setEmailError('Se requiere un correo electrónico válido.');
-      return;
-    }
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
     if (!/\S+@\S+\.\S+/.test(email)) {
-      setEmailError('Se requiere un correo electrónico válido.');
+      showToast('Por favor, ingresa un formato de correo válido.', 'error');
+      setErrorForInput('Error de validación');
       return;
     }
+    setIsLoading(true);
+    setErrorForInput('');
 
-    setEmailError('');
-    console.log('Email:', email);
+    const emailExists = await checkEmailExists(email);
+    if (emailExists) {
+      showToast('¡Bienvenido de nuevo! Redirigiendo...', 'success');
+      // navigate('/login/password');
+    } else {
+      showToast('Correo no encontrado. Redirigiendo al registro...', 'info');
+      // navigate('/register');
+    }
+    setIsLoading(false);
   };
 
   return (
     <FormContainer
-      title="Ingresa tu correo electrónico"
-      subtitle="Continuar a los ajustes de la cuenta"
+      title="Ingresa tu correo"
+      subtitle="Para registrarte o iniciar sesión"
     >
-      {/* 👈 Add the noValidate prop here */}
-      <form onSubmit={handleSubmit} noValidate>
+      <form
+        onSubmit={handleSubmit}
+        noValidate
+        className="form-container__body"
+      >
         <Input
-          label="Ingresa tu correo electrónico"
+          label="Correo electrónico"
           type="email"
           name="email"
           value={email}
-          onChange={handleEmailChange}
-          errorMessage={emailError}
+          onChange={(e) => {
+            setEmail(e.target.value);
+            if (errorForInput) setErrorForInput('');
+          }}
+          error={errorForInput}
         />
-        <Button type="submit">Regístrate o inicia sesión</Button>
+
+        <Button type="submit" isLoading={isLoading}>
+          Continuar
+        </Button>
       </form>
     </FormContainer>
   );
-}
+};
 
 export default LoginPage;
