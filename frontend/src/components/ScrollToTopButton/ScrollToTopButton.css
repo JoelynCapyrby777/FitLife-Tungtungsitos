@@ -1,0 +1,39 @@
+/* src/components/ScrollToTopButton/ScrollToTopButton.css */
+
+.scroll-to-top__button {
+  position: fixed; /* Fijo en la pantalla */
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 1000; /* Por encima de otros elementos */
+  
+  /* Apariencia del botón */
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  border-radius: 50%; /* Círculo perfecto */
+  width: 50px;
+  height: 50px;
+  font-size: 1.5rem; /* Tamaño de la flecha */
+  cursor: pointer;
+  
+  /* Sombra y transiciones */
+  box-shadow: var(--shadow-md);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+  
+  /* Animación */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.3s ease-in-out forwards;
+}
+
+.scroll-to-top__button:hover {
+  background-color: var(--color-primary-dark);
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

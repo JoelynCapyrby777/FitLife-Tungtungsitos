@@ -1,0 +1,76 @@
+/* src/components/Button/Button.css */
+
+.button {
+  /* Estructura y tipografía */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-base);
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  
+  /* Apariencia y espaciado */
+  border: 1px solid transparent;
+  border-radius: var(--border-radius-md);
+  padding: 0.75rem 1.5rem; /* Padding actualizado para un mejor tamaño */
+  box-sizing: border-box; /* Asegura que el padding no altere el tamaño total */
+  min-height: 48px; /* Clave para que no cambie de tamaño con el spinner */
+
+  /* Transiciones */
+  transition: color 150ms ease-in-out, background-color 150ms ease-in-out, border-color 150ms ease-in-out, transform 100ms ease-in-out;
+}
+
+/* Modificador: Botón Primario */
+.button--primary {
+  color: var(--color-white);
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.button--primary:hover {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+}
+
+/* Modificador: Botón Secundario (estilo "outline") */
+.button--secondary {
+  color: var(--color-primary);
+  background-color: transparent;
+  border-color: var(--color-primary);
+}
+
+.button--secondary:hover {
+  color: var(--color-white);
+  background-color: var(--color-primary);
+}
+
+
+/* --- ESTADOS ADICIONALES --- */
+
+/* Estado de Foco (para navegación con teclado) */
+.button:focus-visible {
+  outline: 2px solid var(--color-primary-light);
+  outline-offset: 2px;
+}
+
+/* Estado Activo (feedback al hacer clic) */
+.button:active {
+  transform: scale(0.98);
+}
+
+/* Estado Deshabilitado (usado por `isLoading` o la prop `disabled`) */
+.button:disabled {
+  background-color: var(--color-border);
+  border-color: var(--color-border);
+  color: var(--color-text-secondary);
+  cursor: not-allowed;
+  transform: none; /* Asegura que no haya animación al hacer clic */
+}
+
+/* Estado de Carga (cuando `isLoading` es true) */
+.button.button--loading {
+  cursor: wait; /* Cambia el cursor para indicar que algo está cargando */
+}

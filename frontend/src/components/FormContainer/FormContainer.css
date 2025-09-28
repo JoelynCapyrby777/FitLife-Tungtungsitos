@@ -1,0 +1,50 @@
+
+.form-container {
+  max-width: 400px;
+  width: 90%;
+  margin: var(--spacing-xl) auto;
+  padding: var(--spacing-xl);
+  background-color: var(--color-white);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-md);
+  box-sizing: border-box;
+}
+
+.form-container__header {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.form-container__title {
+  font-size: var(--font-size-xl);
+  font-weight: bold;
+  color: var(--color-text-primary);
+  margin: 0 0 var(--spacing-sm) 0;
+}
+
+.form-container__subtitle {
+  font-size: var(--font-size-md);
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* MEJORA: Añadimos estilos para organizar los elementos dentro del form */
+.form-container__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg); /* Espacio automático entre cada hijo (inputs, botones, etc.) */
+}
+
+/* MEJORA: Ajustes para pantallas pequeñas para una mejor experiencia móvil */
+@media (max-width: 480px) {
+  .form-container {
+    /* Reducimos el padding en móviles para dar más espacio al contenido */
+    padding: var(--spacing-lg) var(--spacing-md);
+    margin-top: var(--spacing-md);
+  }
+
+  .form-container__title {
+    /* Hacemos el título un poco más pequeño en pantallas chicas */
+    font-size: 1.75rem;
+  }
+}

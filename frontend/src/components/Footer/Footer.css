@@ -1,0 +1,49 @@
+/* src/components/Footer.css */
+
+.footer {
+  width: 100%;
+  padding: var(--spacing-lg) var(--spacing-xl);
+  background-color: var(--color-background); /* Fondo sutil, igual que el del layout */
+  border-top: 1px solid var(--color-border);
+  box-sizing: border-box;
+}
+
+.footer__content {
+  max-width: var(--container-width); /* Limita el ancho del contenido */
+  margin: 0 auto; /* Centra el contenido */
+  display: flex;
+  justify-content: space-between; /* Pone el copyright a un lado y los links al otro */
+  align-items: center;
+  flex-wrap: wrap; /* Permite que se apilen en pantallas pequeñas */
+  gap: var(--spacing-md);
+}
+
+.footer__copyright {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.footer__links {
+  display: flex;
+  gap: var(--spacing-lg); /* Espacio entre los enlaces */
+}
+
+.footer__link {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+  text-decoration: none;
+  transition: color 150ms ease-in-out;
+}
+
+.footer__link:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+/* Ajuste para móviles */
+@media (max-width: 768px) {
+  .footer__content {
+    flex-direction: column; /* Apila los elementos verticalmente */
+    align-items: center;   /* Centra todo */
+  }
+}
