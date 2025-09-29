@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import FormContainer from '../components/ui/FormContainer/FormContainer';
-import Input from '../components/ui/Input/Input';
-import Button from '../components/ui/Button/Button';
+
+import { FormContainer, Input, Button } from '../components/ui';
+
 import { useToast } from '../context/ToastContext';
 import { checkEmailExists } from '../api/auth'; 
 
