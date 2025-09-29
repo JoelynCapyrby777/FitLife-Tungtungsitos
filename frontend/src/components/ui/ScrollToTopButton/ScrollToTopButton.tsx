@@ -1,6 +1,6 @@
 // src/components/ScrollToTopButton/ScrollToTopButton.tsx
 import React, { useState, useEffect } from 'react';
-import './ScrollToTopButton.css';
+import './scroll-to-top-button.css';
 
 const ScrollToTopButton: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);

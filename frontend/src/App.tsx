@@ -1,6 +1,6 @@
-import AppRoutes from './routes/AppRoutes';
+import AppRoutes from './routes/app-routes';
 import { ToastProvider } from './context/ToastContext';
-import './App.css';
+import './styles/app.css'
 
 function App() {
   return (

@@ -1,6 +1,6 @@
 // src/components/Alert.tsx
 import React from 'react';
-import './Alert.css';
+import './alert.css';
 
 import type { AlertType } from '../../../types';
 

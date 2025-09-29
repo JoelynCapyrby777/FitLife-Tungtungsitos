@@ -1,5 +1,5 @@
 import React from 'react';
-import './FormContainer.css';
+import './form-container.css';
 
 interface FormContainerProps {
   title: string;

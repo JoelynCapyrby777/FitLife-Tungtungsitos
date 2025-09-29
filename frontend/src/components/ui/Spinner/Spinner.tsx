@@ -1,6 +1,6 @@
 // src/components/Spinner/Spinner.tsx
 import React from 'react';
-import './Spinner.css';
+import './spinner.css';
 
 const Spinner: React.FC = () => {
   return <div className="spinner"></div>;

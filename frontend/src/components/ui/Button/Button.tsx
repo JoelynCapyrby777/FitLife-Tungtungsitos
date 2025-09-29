@@ -1,6 +1,6 @@
 import React from 'react';
 import Spinner from '../Spinner/Spinner';
-import './Button.css'; // Asegúrate de que este es el CSS que refinamos
+import './button.css'; // Asegúrate de que este es el CSS que refinamos
 
 // 1. Definimos la "interfaz" de las props que nuestro componente aceptará.
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
