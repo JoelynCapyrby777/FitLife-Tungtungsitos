@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-
+import { useNavigate } from 'react-router-dom'; // 👈 1. Importar el hook de navegación
 import { FormContainer, Input, Button } from '../components/ui';
-
 import { useToast } from '../context/ToastContext';
-import { checkEmailExists } from '../api/auth'; 
-
+import { useAuth } from '../context/AuthContext';
+import { checkEmailExists } from '../api/auth';
 
 const LoginPage: React.FC = () => {
   const { showToast } = useToast();
+  const { login } = useAuth();
+  const navigate = useNavigate(); // 👈 2. Inicializar el hook
+
   const [email, setEmail] = useState<string>('');
   const [errorForInput, setErrorForInput] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -22,15 +24,25 @@ const LoginPage: React.FC = () => {
     setIsLoading(true);
     setErrorForInput('');
 
-    const emailExists = await checkEmailExists(email);
-    if (emailExists) {
-      showToast('¡Bienvenido de nuevo! Redirigiendo...', 'success');
-      // navigate('/login/password');
-    } else {
-      showToast('Correo no encontrado. Redirigiendo al registro...', 'info');
-      // navigate('/register');
+    try {
+      const emailExists = await checkEmailExists(email);
+      
+      if (emailExists) {
+        showToast('¡Bienvenido de nuevo!', 'success');
+        login({ email: email });
+        // 👇 3. ¡Aquí está la magia! Navegamos a la nueva página
+        navigate('/home');
+      } else {
+        showToast('Correo no encontrado. Creando cuenta...', 'info');
+        login({ email: email }); // También iniciamos sesión para un nuevo usuario
+        // Navegamos al mismo lugar para que pueda llenar sus datos
+        navigate('/ns');
+      }
+    } catch (error) {
+      showToast('Ocurrió un error al conectar con el servidor.', 'error');
+      setIsLoading(false);
     }
-    setIsLoading(false);
+    // Ya no ponemos setIsLoading(false) aquí porque la navegación desmontará el componente.
   };
 
   return (
@@ -54,7 +66,6 @@ const LoginPage: React.FC = () => {
           }}
           error={errorForInput}
         />
-
         <Button type="submit" isLoading={isLoading}>
           Continuar
         </Button>

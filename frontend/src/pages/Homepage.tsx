@@ -1,32 +1,45 @@
-import { type SetStateAction, useState } from 'react'; 
-import { Input } from '../components/ui';
+import React from 'react';
+import { useOutletContext } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
+import { Button } from '../components/ui';
+import './HomePage.css';
 
-function HomePage() {
+// Definimos la forma del 'contexto' que el Layout le pasará a esta página
+interface HomePageContext {
+  openPhysicalDataModal: () => void;
+}
 
-  const [nombre, setNombre] = useState('');
+const HomePage: React.FC = () => {
+  // Obtenemos la función para abrir el modal desde el Layout a través del Outlet.
+  // Añadimos un fallback `|| {}` para prevenir un crash si el contexto no está disponible.
+  const { openPhysicalDataModal } = useOutletContext<HomePageContext>() || {};
+  const { user } = useAuth();
 
-  const handleNombreChange = (event: { target: { value: SetStateAction<string>; }; }) => {
-    setNombre(event.target.value);
+  const handleRegisterClick = () => {
+    if (openPhysicalDataModal) {
+      openPhysicalDataModal();
+    } else {
+      // Este mensaje es útil para depurar si el contexto no se está pasando correctamente.
+      console.error("La función openPhysicalDataModal no fue encontrada en el contexto del Outlet.");
+    }
   };
 
   return (
-    <div>
-      <h1>¡Bienvenido a tu proyecto de React!</h1>
-      <p>Esta es tu primera página. ¡A romperla!</p>
-      
-      {/* Usa el componente Input */}
-        <Input 
-        label="Ingresa tu nombre"
-        type="text"
-        name="nombre"
-        value={nombre} // Pasa el valor del estado como prop
-        onChange={handleNombreChange} // Pasa la función para actualizar el estado
-      />
-      
-      {/* Opcional: muestra el valor del estado para verificar que funciona */}
-      <p>El valor actual del input es: {nombre}</p>
+    <div className="homepage-container">
+      <div className="homepage-welcome">
+        <h1 className="homepage-title">¡Bienvenido, {user?.email}!</h1>
+        <p className="homepage-subtitle">
+          Estás un paso más cerca de alcanzar tus metas. Para empezar, registra tus datos físicos.
+        </p>
+        <Button 
+          styleType="primary" 
+          onClick={handleRegisterClick}
+        >
+          Registrar mis datos físicos
+        </Button>
+      </div>
     </div>
   );
-}
+};
 
 export default HomePage;

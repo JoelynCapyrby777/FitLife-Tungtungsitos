@@ -9,15 +9,16 @@
 
 :root {
   /* === PALETA DE COLORES === */
-  /* Colores primarios y de marca */
-  --color-primary: #0d6efd;
-  --color-primary-light: #408cfd;
-  --color-primary-dark: #0a58ca;
+  
+  /* Paleta de Colores Verdes (NUEVA) */
+  --color-primary: #4CAF50; /* Verde principal, vibrante y saludable */
+  --color-primary-light: #81C784; /* Verde más claro para acentos sutiles */
+  --color-primary-dark: #388E3C;  /* Verde oscuro para estados hover */
 
-  /* Colores de feedback/estado */
-  --color-success: #198754;
-  --color-error: #dc3545;
-  --color-warning: #ffc107;
+  /* Colores de Feedback (Ajustados al tema) */
+  --color-success: #2E7D32;        /* Un verde más profundo para éxito */
+  --color-error: #D32F2F;          /* Rojo clásico para errores */
+  --color-warning: #FFA000;        /* Naranja/Ámbar para advertencias */
 
   /* Paleta de grises y texto */
   --color-text-primary: #212529; /* Casi negro para texto principal */
