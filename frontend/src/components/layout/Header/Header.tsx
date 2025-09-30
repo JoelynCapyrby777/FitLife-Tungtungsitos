@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import './Header.css';
 import logo from '../../../assets/logotipo.svg'; // Ajusta la ruta a tu logo
-import { useAuth } from '../../../context/AuthContext'; // 👈 1. Importar el hook
+import { useAuth } from '../../../context/AuthContext';
 
 const Header: React.FC = () => {
-  const { user, logout } = useAuth(); // 👈 2. Obtener el usuario y la función de logout
+  const { user, logout } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -15,18 +15,17 @@ const Header: React.FC = () => {
   const handleLogout = () => {
     if (isMenuOpen) toggleMenu(); // Cierra el menú si está abierto
     logout();
-    // Opcional: Redirigir al login
-    // navigate('/');
   };
 
   return (
     <header className="header">
-      <div className="header__brand">
+      {/* 👇 CAMBIO AQUÍ: Se reemplazó el <div> por un <NavLink> */}
+      <NavLink to="/" className="header__brand">
         <img src={logo} alt="FitLife Logo" className="header__logo" />
         <span className="header__brand-name">FitLife</span>
-      </div>
+      </NavLink>
 
-      {/* 👇 3. Todo el menú (escritorio y móvil) solo se renderiza SI hay un usuario */}
+      {/* Todo el menú (escritorio y móvil) solo se renderiza SI hay un usuario */}
       {user && (
         <>
           {/* Navegación para Escritorio */}
@@ -57,4 +56,3 @@ const Header: React.FC = () => {
 };
 
 export default Header;
-
