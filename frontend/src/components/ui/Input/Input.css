@@ -4,7 +4,7 @@
   display: flex;
   text-align: start;
   background-color: var(--color-white);
-  margin-top: 2rem;
+  margin-top: 0.1rem;
   position: relative; /* Clave para los pseudo-elementos */
 
   /* Borde controlado para efecto de línea inferior */
