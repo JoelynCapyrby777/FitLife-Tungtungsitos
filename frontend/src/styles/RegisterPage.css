@@ -1,5 +1,5 @@
 
-
+/*
 .login-header {
   display: flex;
   align-items: center;
@@ -19,25 +19,10 @@
   color: var(--color-text-primary);
 }
 
-/* Título principal del card */
-.login-title {
-  font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-text-primary);
-  margin-bottom: 0.4rem;
-  text-align: center;
-  letter-spacing: 0.5px;
-}
 
-/* Subtítulo */
-.form-container__subtitle {
-  font-size: var(--font-size-base);
-  color: var(--color-text-secondary);
-  margin-bottom: 1.4rem;
-  text-align: center;
-}
 
 /* Inputs y password group */
+/*
 .form-container__body {
   width: 100%;
   display: flex;
@@ -45,18 +30,18 @@
   gap: 1.0rem;
 }
 
-/* Botón principal */
+/* Botón principal 
 .form-container__body .button {
   width: 100%;
-}
-
-/* Enlace para registro/login */
+}}*/
+/*
+/* Enlace para registro/login 
 .register-link {
   text-align: center;
   font-size: var(--font-size-base);
  
-}
-
+}*/
+/*
 .link-button {
   background: none;
   border: none;
@@ -66,10 +51,10 @@
   font-size: inherit;
   
   margin-left: 2px;
-}
+}*/
 
 /* Responsive */
-@media (max-width: 500px) {
+/*@media (max-width: 500px) {
   .form-container {
     max-width: 95vw;
     padding: 1.2rem 0.5rem 1rem 0.5rem;
@@ -77,4 +62,4 @@
   .login-logo {
     height: 32px;
   }
-}
+}*/
