@@ -37,7 +37,7 @@ const LoginPage: React.FC = () => {
     if (emailExists) {
       showToast('¡Bienvenido de nuevo!', 'success');
       login({ email });
-      navigate('/Home');
+      navigate('/');
     } else {
       showToast('Correo no encontrado. Verifícalo o regístrate.', 'error');
       setErrorForInput('email');

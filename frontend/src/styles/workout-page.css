@@ -1,0 +1,52 @@
+/* src/styles/workout-page.css */
+
+.workout-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: var(--color-background);
+  padding: var(--spacing-md);
+  box-sizing: border-box;
+}
+
+.workout-card {
+  width: 100%;
+  max-width: 600px;
+  background-color: var(--color-white);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-xl);
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.workout-progress {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-xl);
+}
+
+.exercise-focus {
+  margin-bottom: var(--spacing-xxl);
+}
+
+.exercise-name-large {
+  font-size: 3rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  margin: 0 0 var(--spacing-md) 0;
+}
+
+.exercise-sets-reps-large {
+  font-size: 1.75rem;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.workout-navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+}

@@ -1,9 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // 👈 1. Importar el componente Link
 import { useAuth } from '../context/AuthContext';
 import { useModal } from '../context/ModalContext';
-import './home-page.css'; // Nombre de archivo estandarizado
+import './home-page.css';
 
-// Un pequeño componente de ícono para las tarjetas
 const CardIcon: React.FC<{ icon: string }> = ({ icon }) => (
   <div className="card-icon">{icon}</div>
 );
@@ -20,25 +20,25 @@ const HomePage: React.FC = () => {
       </header>
 
       <div className="dashboard-grid">
-        {/* Card Principal: Llamado a la acción para el modal */}
+        {/* Card Principal: Sigue abriendo el modal */}
         <button className="dashboard-card cta-card" onClick={() => openModal('physicalData')}>
           <CardIcon icon="✍️" />
           <h2 className="card-title">Completa tu Perfil</h2>
           <p className="card-description">Registra tus datos físicos para obtener planes personalizados y un seguimiento preciso.</p>
         </button>
 
-        {/* Cards de ejemplo para futuras funcionalidades */}
-        <div className="dashboard-card placeholder-card">
+        {/* 👇 2. Convertimos las tarjetas en enlaces 👇 */}
+        <Link to="/routines" className="dashboard-card">
           <CardIcon icon="🏋️" />
           <h2 className="card-title">Iniciar Rutina</h2>
           <p className="card-description">Explora y comienza una de las rutinas preparadas para ti.</p>
-        </div>
+        </Link>
         
-        <div className="dashboard-card placeholder-card">
+        <Link to="/progress" className="dashboard-card">
           <CardIcon icon="📊" />
           <h2 className="card-title">Ver Progreso</h2>
           <p className="card-description">Revisa tus estadísticas y mira cuánto has avanzado.</p>
-        </div>
+        </Link>
       </div>
     </div>
   );
