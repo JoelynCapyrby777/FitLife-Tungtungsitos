@@ -1,0 +1,10 @@
+.eye-icon {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-60%);
+  z-index: 2;
+}
