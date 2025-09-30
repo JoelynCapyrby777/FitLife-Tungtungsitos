@@ -1,4 +1,3 @@
-
 .form-container {
   max-width: 400px;
   width: 90%;
@@ -11,40 +10,46 @@
 }
 
 .form-container__header {
-  text-align: center;
   margin-bottom: var(--spacing-lg);
+  /* 👇 EL ARREGLO DEFINITIVO 👇 */
+  /* Forzamos a que todo dentro del header se alinee a la izquierda por defecto */
+  text-align: left; 
+}
+
+/* Esta clase ahora SOBREESCRIBE la regla anterior para centrar todo. */
+.form-container__header--center {
+  text-align: center;
 }
 
 .form-container__title {
-  font-size: var(--font-size-xl);
-  font-weight: bold;
-  color: var(--color-primary-dark);
+  font-size: 1.75rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
   margin: 0 0 var(--spacing-sm) 0;
+  /* Ya no necesitamos text-align aquí porque lo hereda del padre. */
 }
 
 .form-container__subtitle {
-  font-size: var(--font-size-md);
+  font-size: var(--font-size-base);
   color: var(--color-text-secondary);
   margin: 0;
+
 }
 
-/* MEJORA: Añadimos estilos para organizar los elementos dentro del form */
 .form-container__body {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-lg); /* Espacio automático entre cada hijo (inputs, botones, etc.) */
+  gap: var(--spacing-lg);
 }
 
-/* MEJORA: Ajustes para pantallas pequeñas para una mejor experiencia móvil */
 @media (max-width: 480px) {
   .form-container {
-    /* Reducimos el padding en móviles para dar más espacio al contenido */
     padding: var(--spacing-lg) var(--spacing-md);
     margin-top: var(--spacing-md);
   }
 
   .form-container__title {
-    /* Hacemos el título un poco más pequeño en pantallas chicas */
-    font-size: 1.75rem;
+    font-size: 1.5rem;
   }
 }
+

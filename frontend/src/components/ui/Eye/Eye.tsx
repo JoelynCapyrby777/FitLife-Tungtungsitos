@@ -1,6 +1,6 @@
 import React from 'react';
 import { Eye as EyeOpen, EyeOff } from 'lucide-react'; 
-import './Eye.css';
+import './eye.css';
 
 interface EyeProps {
   open: boolean;

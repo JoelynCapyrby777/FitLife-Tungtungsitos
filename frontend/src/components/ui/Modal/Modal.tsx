@@ -10,19 +10,18 @@ interface ModalProps {
 
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children, title }) => {
   if (!isOpen) {
-    return null; // Si no está abierto, no renderiza nada
+    return null;
   }
 
   return (
-    // El 'portal' del modal que incluye el fondo oscuro
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-        <div className="modal-header">
+        <header className="modal-header">
           <h2 className="modal-title">{title}</h2>
           <button className="modal-close-button" onClick={onClose}>
             &times;
           </button>
-        </div>
+        </header>
         <div className="modal-body">
           {children}
         </div>

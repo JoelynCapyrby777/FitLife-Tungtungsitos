@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Input, Button } from '../../ui';
 import { useToast } from '../../../context/ToastContext';
-import './PhysicalDataForm.css';
+import './physical-data-form.css';
 
 // Esta prop es para que el formulario pueda "avisarle" a su padre (el Modal) que ya terminó.
 interface PhysicalDataFormProps {

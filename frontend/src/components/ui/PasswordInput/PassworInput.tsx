@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import './PasswordInput.css';
+import './password-input.css';
 import Input from '../Input/Input';
 import Eye from '../Eye/Eye';
 
@@ -9,7 +9,7 @@ interface PasswordInputProps {
   error?: string;
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  // Puedes agregar otros props si lo necesitas
+
 }
 
 const PasswordInput: React.FC<PasswordInputProps> = ({
