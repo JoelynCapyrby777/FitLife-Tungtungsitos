@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import logo from "../assets/logotipo.svg";
-import FormContainer from "../components/ui/FormContainer/FormContainer";
-import Input from "../components/ui/Input/Input";
-import Button from "../components/ui/Button/Button";
+import { FormContainer, Input, Button, FormLink } from "../components/ui";
 import { useToast } from "../context/ToastContext";
+import '../styles/login-page.css'; // Reutilizamos los estilos del login page
 
 const RecoverAccountPage: React.FC = () => {
   const { showToast } = useToast();
@@ -15,69 +13,59 @@ const RecoverAccountPage: React.FC = () => {
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setErrorForInput("");
 
     if (!/\S+@\S+\.\S+/.test(email)) {
       showToast("Por favor, ingresa un correo válido.", "error");
-      setErrorForInput("Correo no válido");
+      setErrorForInput("email");
       return;
     }
 
     setIsLoading(true);
-    setErrorForInput("");
 
-    // Aquí deberías llamar a tu API para enviar el correo de recuperación
-   
+    // Simulación de una llamada a la API
+    await new Promise(resolve => setTimeout(resolve, 1000));
 
-    showToast("Te hemos enviado un correo para recuperar tu cuenta.", "success");
+    showToast("Si el correo existe, te hemos enviado un enlace para recuperar tu cuenta.", "success");
     setIsLoading(false);
+    
+    // Opcional: Redirigir al login después de enviar el correo
+    // navigate("/"); 
   };
 
   return (
-    <FormContainer
-      title={
-        <div className="login-title-block">
-          <div className="login-header">
-            <img src={logo} alt="Logo de la app" className="login-logo" />
-            <span className="login-appname">LitLife</span>
-          </div>
-          <span className="login-title">Recuperar cuenta</span>
-        </div>
-      }
-      subtitle="Ingresa tu correo para recuperar el acceso"
-    >
-      <form
-        onSubmit={handleSubmit}
-        noValidate
-        className="form-container__body"
+    <div className="login-page-background">
+      <FormContainer
+        title="Recuperar Cuenta"
+        subtitle="Ingresa tu correo para reestablecer tu contraseña."
+        titleAlign="left"
       >
-        <Input
-          label="Correo electrónico"
-          type="email"
-          name="email"
-          value={email}
-          onChange={(e) => {
-            setEmail(e.target.value);
-            if (errorForInput) setErrorForInput("");
-          }}
-          error={errorForInput}
-        />
+        <form
+          onSubmit={handleSubmit}
+          noValidate
+          className="form-container__body"
+        >
+          <Input
+            label="Correo electrónico"
+            type="email"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            error={errorForInput ? "Error" : ""}
+          />
 
-        <Button type="submit" isLoading={isLoading} onClick={() => navigate("/verificar")}>
-          Enviar recuperación
-        </Button>
-
-        <div className="register-link">
-          ¿Ya tienes cuenta?{" "}
-          <button
-            type="button"
-            className="link-button"
-            onClick={() => navigate("/")}
-          >
-            Inicia sesión aquí
-          </button>
-        </div>
-      </form>
-    </FormContainer>
+          <Button type="submit" isLoading={isLoading}>
+            Enviar correo de recuperación
+          </Button>
+          
+          <FormLink
+            text="¿Recordaste tu contraseña?"
+            linkText="Inicia sesión"
+            to="/"
+          />
+        </form>
+      </FormContainer>
+    </div>
   );
 };
 
