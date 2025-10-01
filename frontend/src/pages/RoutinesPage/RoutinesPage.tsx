@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../styles/routines-page.css';
+import './routines-page.css';
 
 // Datos de ejemplo para las rutinas
 const routines = [

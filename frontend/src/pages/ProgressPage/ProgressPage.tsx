@@ -1,6 +1,6 @@
 import React from 'react';
-import { useProgress } from '../context/ProgressContext';
-import '../styles/progress-page.css';
+import { useProgress } from '../../context/ProgressContext';
+import './progress-page.css';
 
 const ProgressPage: React.FC = () => {
   const { history } = useProgress();

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FormContainer, Input, Button, FormLink } from "../../components/ui";
 import { useToast } from "../../context/ToastContext";
-import '../styles/login-page.css'; // Reutilizamos los estilos del login page
+import '../LoginPage/login-page.css'; // Reutilizamos los estilos del login page
 
 const RecoverAccountPage: React.FC = () => {
   const { showToast } = useToast();

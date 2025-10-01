@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FormContainer, PasswordInput, Button, FormLink } from "../../components/ui";
 import { useToast } from "../../context/ToastContext";
-import "../styles/login-page.css"; // Reutilizamos el fondo
+import "../LoginPage/login-page.css"; // Reutilizamos el fondo
 
 const ChangePasswordPage: React.FC = () => {
   const { showToast } = useToast();

@@ -1,8 +1,8 @@
 import React from 'react';
-import { useAuth } from '../context/AuthContext';
-import { useModal } from '../context/ModalContext';
-import { Button } from '../components/ui';
-import '../styles/profile-page.css';
+import { useAuth } from '../../context/AuthContext';
+import { useModal } from '../../context/ModalContext';
+import { Button } from '../../components/ui';
+import './profile-page.css';
 
 const ProfilePage: React.FC = () => {
   const { user } = useAuth();

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useParams, Link ,useNavigate } from 'react-router-dom';
-import '../styles/routine-detail-page.css';
+import './routine-detail-page.css';
 import { Button } from '../../components/ui';
 
 // Expandimos nuestros datos de ejemplo para incluir ejercicios

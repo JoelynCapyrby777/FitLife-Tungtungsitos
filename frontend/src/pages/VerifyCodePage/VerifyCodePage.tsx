@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FormContainer, Input, Button, FormLink } from "../../components/ui";
 import { useToast } from "../../context/ToastContext";
-import "../styles/login-page.css"; // Reutilizamos el fondo
-import "../styles/verify-code-page.css"; // Estilos específicos para esta página
+import "../LoginPage/login-page.css"; // Reutilizamos el fondo
+import "./verify-code-page.css"; // Estilos específicos para esta página
 
 const VerifyCodePage: React.FC = () => {
   const { showToast } = useToast();

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FormContainer, Input, Button, PasswordInput, FormLink } from '../components/ui';
-import { useAuth } from '../context/AuthContext';
-import { useToast } from '../context/ToastContext';
-import { loginUser } from '../api/auth';
-import "../styles/login-page.css";
+import { FormContainer, Input, Button, PasswordInput, FormLink } from '../../components/ui';
+import { useAuth } from '../../context/AuthContext';
+import { useToast } from '../../context/ToastContext';
+import { loginUser } from '../../api/auth';
+import "./login-page.css";
 
 const LoginPage: React.FC = () => {
   const { showToast } = useToast();

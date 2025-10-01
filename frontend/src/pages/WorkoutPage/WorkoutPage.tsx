@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useProgress } from '../../context/ProgressContext';
 import { Button } from '../../components/ui';
-import '../styles/workout-page.css';
+import './workout-page.css';
 
 // Usaremos los mismos datos que ya teníamos
 const routinesData = {
