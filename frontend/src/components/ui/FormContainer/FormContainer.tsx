@@ -1,35 +1,33 @@
 import React from 'react';
-import './form-container.css';
+import './form-container.css'; // Asegúrate que el nombre del css esté en minúscula
 
 interface FormContainerProps {
-  title: string;
-  subtitle?: string; // El subtítulo es opcional
-  children: React.ReactNode; // Para aceptar cualquier elemento hijo (inputs, botones, etc.)
+  title: React.ReactNode; // Acepta ReactNode para títulos complejos
+  subtitle?: string;
+  children: React.ReactNode;
+  titleAlign?: 'center' | 'left'; // Nueva prop para alineación
 }
 
-const FormContainer: React.FC<FormContainerProps> = ({ title, subtitle, children }) => {
+const FormContainer: React.FC<FormContainerProps> = ({ 
+  title, 
+  subtitle, 
+  children, 
+  titleAlign = 'center' // 'center' es el valor por defecto
+}) => {
+  // Se añade una clase modificadora si la alineación no es a la izquierda
+  const headerClasses = `form-container__header ${
+    titleAlign === 'center' ? 'form-container__header--center' : ''
+  }`;
+
   return (
     <div className="form-container">
-      <header className="form-container__header">
+      <header className={headerClasses}>
         <h1 className="form-container__title">{title}</h1>
         {subtitle && <p className="form-container__subtitle">{subtitle}</p>}
       </header>
-      
-      {/* 👇 Ya no necesitamos el <main> con la clase aquí 👇 */}
       {children}
     </div>
   );
 };
 
 export default FormContainer;
-
-/*
-  Ejemplo de cómo usarlo en otra parte de tu app:
-
-  <FormContainer title="Crear Cuenta" subtitle="Ingresa tus datos para registrarte">
-    <Input label="Nombre de usuario" type="text" />
-    <Input label="Email" type="email" />
-    <Input label="Contraseña" type="password" />
-    <button>Registrarse</button>
-  </FormContainer>
-*/

@@ -1,42 +1,44 @@
 import React from 'react';
-import { useOutletContext } from 'react-router-dom';
+import { Link } from 'react-router-dom'; // 👈 1. Importar el componente Link
 import { useAuth } from '../context/AuthContext';
-import { Button } from '../components/ui';
-import './HomePage.css';
+import { useModal } from '../context/ModalContext';
+import './home-page.css';
 
-// Definimos la forma del 'contexto' que el Layout le pasará a esta página
-interface HomePageContext {
-  openPhysicalDataModal: () => void;
-}
+const CardIcon: React.FC<{ icon: string }> = ({ icon }) => (
+  <div className="card-icon">{icon}</div>
+);
 
 const HomePage: React.FC = () => {
-  // Obtenemos la función para abrir el modal desde el Layout a través del Outlet.
-  // Añadimos un fallback `|| {}` para prevenir un crash si el contexto no está disponible.
-  const { openPhysicalDataModal } = useOutletContext<HomePageContext>() || {};
   const { user } = useAuth();
-
-  const handleRegisterClick = () => {
-    if (openPhysicalDataModal) {
-      openPhysicalDataModal();
-    } else {
-      // Este mensaje es útil para depurar si el contexto no se está pasando correctamente.
-      console.error("La función openPhysicalDataModal no fue encontrada en el contexto del Outlet.");
-    }
-  };
+  const { openModal } = useModal();
 
   return (
-    <div className="homepage-container">
-      <div className="homepage-welcome">
-        <h1 className="homepage-title">¡Bienvenido, {user?.email}!</h1>
-        <p className="homepage-subtitle">
-          Estás un paso más cerca de alcanzar tus metas. Para empezar, registra tus datos físicos.
-        </p>
-        <Button 
-          styleType="primary" 
-          onClick={handleRegisterClick}
-        >
-          Registrar mis datos físicos
-        </Button>
+    <div className="homepage-dashboard">
+      <header className="dashboard-header">
+        <h1 className="dashboard-title">¡Bienvenido de nuevo, {user?.email}!</h1>
+        <p className="dashboard-subtitle">Listo para empezar a transformar tu vida. ¿Qué haremos hoy?</p>
+      </header>
+
+      <div className="dashboard-grid">
+        {/* Card Principal: Sigue abriendo el modal */}
+        <button className="dashboard-card cta-card" onClick={() => openModal('physicalData')}>
+          <CardIcon icon="✍️" />
+          <h2 className="card-title">Completa tu Perfil</h2>
+          <p className="card-description">Registra tus datos físicos para obtener planes personalizados y un seguimiento preciso.</p>
+        </button>
+
+        {/* 👇 2. Convertimos las tarjetas en enlaces 👇 */}
+        <Link to="/routines" className="dashboard-card">
+          <CardIcon icon="🏋️" />
+          <h2 className="card-title">Iniciar Rutina</h2>
+          <p className="card-description">Explora y comienza una de las rutinas preparadas para ti.</p>
+        </Link>
+        
+        <Link to="/progress" className="dashboard-card">
+          <CardIcon icon="📊" />
+          <h2 className="card-title">Ver Progreso</h2>
+          <p className="card-description">Revisa tus estadísticas y mira cuánto has avanzado.</p>
+        </Link>
       </div>
     </div>
   );

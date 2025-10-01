@@ -1,6 +1,7 @@
-import React, { createContext, useState, useContext, ReactNode } from 'react';
+import React, { createContext, useState, useContext, type ReactNode } from 'react';
 import { Modal } from '../components/ui';
-import PhysicalDataForm from '../pages/PhysicalDataForm';
+// 👇 CAMBIO: La ruta ahora es más lógica, ya que el formulario es un componente.
+import PhysicalDataForm from '../components/forms/PhysicalDataForm/PhysicalDataForm';
 
 // Define los tipos de modales que puede haber en tu app
 type ModalType = 'physicalData' | null;
