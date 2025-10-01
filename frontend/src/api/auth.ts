@@ -1,16 +1,51 @@
-// src/api/auth.ts
+// La URL base de tu API.
+const BASE_URL = 'http://localhost:3000';
 
 /**
- * Simula una llamada a la API para verificar si un correo electrónico ya está registrado.
- * @param email El correo electrónico a verificar.
- * @returns Una promesa que resuelve a `true` si el email existe, `false` si no.
+ * Inicia sesión de un usuario llamando a la API real.
  */
-export const checkEmailExists = async (email: string): Promise<boolean> => {
-  console.log(`Verificando si el email "${email}" existe...`);
-  await new Promise(resolve => setTimeout(resolve, 500));
+export const loginUser = async (email, password) => {
+  try {
+    const response = await fetch(`${BASE_URL}/auth/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ 
+        correo: email, 
+        contrasena: password 
+      }),
+    });
 
-  const existingUsers = ['usuario.existente@gmail.com', 'test@dominio.com'];
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || 'Credenciales incorrectas');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Error en el inicio de sesión:', error);
+    throw error;
+  }
+};
 
-  return existingUsers.includes(email.toLowerCase());
+/**
+ * Registra un nuevo usuario llamando a la API.
+ * @param userData Un objeto con todos los datos del usuario requeridos por el backend.
+ */
+export const registerUser = async (userData) => {
+  try {
+    const response = await fetch(`${BASE_URL}/user`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(userData), // Se envía el objeto completo
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || 'No se pudo completar el registro.');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Error en el registro:', error);
+    throw error;
+  }
 };
 
