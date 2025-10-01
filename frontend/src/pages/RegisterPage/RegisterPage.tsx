@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FormContainer, Input, PasswordInput, Button, FormLink } from "../components/ui";
-import { useToast } from "../context/ToastContext";
-import { registerUser } from "../api/auth";
+import { FormContainer, Input, PasswordInput, Button, FormLink } from "../../components/ui";
+import { useToast } from "../../context/ToastContext";
+import { registerUser } from "../../api/auth";
 import '../styles/login-page.css';
 
 const RegisterPage: React.FC = () => {

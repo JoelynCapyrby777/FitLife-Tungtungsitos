@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; // 👈 1. Importar el componente Link
-import { useAuth } from '../context/AuthContext';
-import { useModal } from '../context/ModalContext';
+import { useAuth } from '../../context/AuthContext';
+import { useModal } from '../../context/ModalContext';
 import './home-page.css';
 
 const CardIcon: React.FC<{ icon: string }> = ({ icon }) => (
