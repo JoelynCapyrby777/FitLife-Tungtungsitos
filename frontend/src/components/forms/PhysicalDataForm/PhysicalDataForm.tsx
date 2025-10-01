@@ -3,7 +3,6 @@ import { Input, Button } from '../../ui';
 import { useToast } from '../../../context/ToastContext';
 import './physical-data-form.css';
 
-// Esta prop es para que el formulario pueda "avisarle" a su padre (el Modal) que ya terminó.
 interface PhysicalDataFormProps {
   onSave?: () => void;
 }
@@ -11,12 +10,8 @@ interface PhysicalDataFormProps {
 const PhysicalDataForm: React.FC<PhysicalDataFormProps> = ({ onSave }) => {
   const { showToast } = useToast();
   const [formData, setFormData] = useState({
-    age: '',
-    height: '',
-    weight: '',
-    gender: 'male',
-    experience: 'beginner',
-    goal: 'lose_weight',
+    age: '', height: '', weight: '', gender: 'male',
+    experience: 'beginner', goal: 'lose_weight',
   });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -26,10 +21,22 @@ const PhysicalDataForm: React.FC<PhysicalDataFormProps> = ({ onSave }) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    // 👇 ¡NUEVA LÓGICA DE VALIDACIÓN! 👇
+    // Convertimos los valores a números para poder compararlos
+    const age = Number(formData.age);
+    const height = Number(formData.height);
+    const weight = Number(formData.weight);
+
+    if (age <= 1 || height <= 1 || weight <= 1) {
+      showToast('La edad, altura y peso deben ser números positivos.', 'error');
+      return; // Detenemos el envío del formulario
+    }
+    // --- Fin de la validación ---
+
     console.log('Datos físicos enviados:', formData);
     showToast('¡Tus datos han sido guardados con éxito!', 'success');
     
-    // Si el padre (Modal) nos pasó la función onSave, la llamamos para que se cierre.
     if (onSave) {
       onSave();
     }
@@ -37,9 +44,33 @@ const PhysicalDataForm: React.FC<PhysicalDataFormProps> = ({ onSave }) => {
 
   return (
     <form onSubmit={handleSubmit} className="form-container__body">
-      <Input label="Edad" type="number" name="age" value={formData.age} onChange={handleChange} required />
-      <Input label="Altura (en cm)" type="number" name="height" value={formData.height} onChange={handleChange} required />
-      <Input label="Peso (en kg)" type="number" name="weight" value={formData.weight} onChange={handleChange} required />
+      <Input
+        label="Edad"
+        type="number"
+        name="age"
+        value={formData.age}
+        onChange={handleChange}
+        min="1" // No permite números negativos o cero
+        required
+      />
+      <Input
+        label="Altura (en cm)"
+        type="number"
+        name="height"
+        value={formData.height}
+        onChange={handleChange}
+        min="1" // No permite números negativos o cero
+        required
+      />
+      <Input
+        label="Peso (en kg)"
+        type="number"
+        name="weight"
+        value={formData.weight}
+        onChange={handleChange}
+        min="1" // No permite números negativos o cero
+        required
+      />
       
       <div className="form-group">
         <label htmlFor="gender" className="form-label">Género</label>
@@ -65,7 +96,6 @@ const PhysicalDataForm: React.FC<PhysicalDataFormProps> = ({ onSave }) => {
           <option value="lose_weight">Bajar de peso</option>
           <option value="gain_muscle">Ganar músculo</option>
           <option value="maintain">Mantenerme en forma</option>
-          <option value="improve_endurance">Mejorar resistencia</option>
         </select>
       </div>
 

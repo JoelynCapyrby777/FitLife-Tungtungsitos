@@ -1,9 +1,9 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FormContainer, Input, PasswordInput, Button, FormLink } from "../components/ui";
 import { useToast } from "../context/ToastContext";
-// import { registerUser } from "../api/auth"; // A futuro, importarías tu función de API
-import '../styles/login-page.css'; // Reutilizamos los estilos del login page
+import { registerUser } from "../api/auth";
+import '../styles/login-page.css';
 
 const RegisterPage: React.FC = () => {
   const { showToast } = useToast();
@@ -36,16 +36,27 @@ const RegisterPage: React.FC = () => {
 
     setIsLoading(true);
 
-    // Aquí llamarías a tu API para registrar al usuario
-    // await registerUser({ email, password });
-    
-    // Simulación de éxito
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    
-    showToast("¡Registro exitoso! Ahora inicia sesión.", "success");
-    navigate("/"); // Redirige al login
+    try {
+      // Creamos el objeto completo con los datos del formulario y los valores por defecto
+      const userData = {
+        correo: email,
+        contrasena: password,
+        nombre: 'Nuevo Usuario', // Valor por defecto
+        pesoKg: 0,              // Valor por defecto
+        edad: 0,                // Valor por defecto
+        estaturaMetros: 0,      // Valor por defecto
+      };
 
-    setIsLoading(false);
+      await registerUser(userData);
+      
+      showToast("¡Registro exitoso! Ahora inicia sesión.", "success");
+      navigate("/");
+
+    } catch (error: any) {
+      showToast(error.message || "No se pudo completar el registro.", "error");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -68,7 +79,6 @@ const RegisterPage: React.FC = () => {
             onChange={(e) => setEmail(e.target.value)}
             error={errorForInput === 'email' ? 'Error' : ''}
           />
-
           <PasswordInput
             label="Contraseña"
             name="password"
@@ -76,7 +86,6 @@ const RegisterPage: React.FC = () => {
             onChange={(e) => setPassword(e.target.value)}
             error={errorForInput === 'password' ? 'Error' : ''}
           />
-
           <PasswordInput
             label="Confirmar contraseña"
             name="confirmPassword"
@@ -84,11 +93,9 @@ const RegisterPage: React.FC = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
             error={errorForInput === 'confirmPassword' ? 'Error' : ''}
           />
-
           <Button type="submit" isLoading={isLoading}>
             Crear cuenta
           </Button>
-
           <FormLink
             text="¿Ya tienes cuenta?"
             linkText="Inicia sesión"

@@ -13,7 +13,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   isLoading?: boolean; 
 }
 
-// 2. Creamos el componente funcional, tipándolo con `React.FC<ButtonProps>`.
+
 const Button: React.FC<ButtonProps> = ({
   children,
   styleType = 'primary', // Valor por defecto si no se especifica.

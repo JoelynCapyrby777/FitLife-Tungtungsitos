@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { FormContainer, Input, Button, PasswordInput, FormLink } from '../components/ui';
 import { useAuth } from '../context/AuthContext';
 import { useToast } from '../context/ToastContext';
-import { checkEmailExists } from '../api/auth';
+import { loginUser } from '../api/auth';
 import "../styles/login-page.css";
 
 const LoginPage: React.FC = () => {
@@ -33,16 +33,20 @@ const LoginPage: React.FC = () => {
     
     setIsLoading(true);
 
-    const emailExists = await checkEmailExists(email);
-    if (emailExists) {
+    try {
+      const authData = await loginUser(email, password);
+      
       showToast('¡Bienvenido de nuevo!', 'success');
-      login({ email });
-      navigate('/');
-    } else {
-      showToast('Correo no encontrado. Verifícalo o regístrate.', 'error');
+      // 👇 Le pasamos la respuesta completa (token + User) al contexto
+      login(authData); 
+      navigate('/'); // Navegar a la página principal
+
+    } catch (error: any) {
+      showToast(error.message || 'Hubo un problema al iniciar sesión.', 'error');
       setErrorForInput('email');
+    } finally {
+      setIsLoading(false);
     }
-    setIsLoading(false);
   };
 
   return (
@@ -91,3 +95,4 @@ const LoginPage: React.FC = () => {
 };
 
 export default LoginPage;
+

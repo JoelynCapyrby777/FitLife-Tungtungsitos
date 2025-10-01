@@ -3,3 +3,12 @@
  */
 
 export type AlertType = 'success' | 'error' | 'warning' | 'info';
+
+export interface User {
+  id: number;
+  nombre: string;
+  edad: number;
+  correo: string;
+  pesoKg: string;
+  estaturaMetros: string;
+}
