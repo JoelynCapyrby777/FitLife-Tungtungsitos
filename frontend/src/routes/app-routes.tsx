@@ -6,17 +6,20 @@ import PublicRoute from './components/PublicRoute';
 
 // Importamos el Layout y todas las páginas
 import { Layout } from '../components/layout';
-import LoginPage from '../pages/LoginPage';
-import RegisterPage from '../pages/RegisterPage';
-import RecoverAccountPage from '../pages/RecoverAccountPage';
-import VerifyCodePage from '../pages/VerifyCodeoage';
-import ChangePasswordPage from '../pages/ChagePasswordPage';
-import HomePage from '../pages/HomePage';
-import ProfilePage from '../pages/ProfilePage';
-import RoutinesPage from '../pages/RoutinesPage';
-import RoutineDetailPage from '../pages/RoutineDetailPage';
-import WorkoutPage from '../pages/WorkoutPage';
-import ProgressPage from '../pages/ProgressPage';
+
+import {
+  LoginPage,
+  RegisterPage,
+  RecoverAccountPage,
+  VerifyCodePage,
+  ChangePasswordPage,
+  HomePage,
+  ProfilePage,
+  RoutinesPage,
+  RoutineDetailPage,
+  WorkoutPage,
+  ProgressPage
+} from '../pages';
 
 // Renombramos a AppRouter para consistencia con la nueva carpeta /router
 const AppRouter = () => {
