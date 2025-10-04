@@ -1,23 +1,175 @@
-/* src/styles/login-page.css */
-
 .login-page-background {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-background);
+  min-height: 100vh;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.login-page-background .form-container {
-  animation: fadeIn 0.5s ease-in-out;
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  animation: fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* --- ENCABEZADO --- */
+.form-header__brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+  animation: fadeIn 0.8s ease-out 0.2s backwards;
+}
+
+.form-header__logo {
+  width: 40px;
+  height: 40px;
+  transition: var(--transition-base);
+}
+
+.form-header__logo:hover {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.form-header__brand-name {
+  font-size: 1.75rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-primary);
+  letter-spacing: -0.5px;
+}
+
+.form-header__title {
+  color: var(--color-text-primary);
+  font-size: 1.875rem;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-xs);
+  text-align: center;
+  animation: fadeIn 0.8s ease-out 0.3s backwards;
+}
+
+.form-header__subtitle {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
+  margin-bottom: var(--spacing-lg);
+  text-align: center;
+  animation: fadeIn 0.8s ease-out 0.4s backwards;
+}
+
+/* --- FORMULARIO --- */
+.form-container__body {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-md);
+  animation: fadeIn 0.8s ease-out 0.5s backwards;
+}
+
+
+
+/* --- ENLACES --- */
+.form-link {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  transition: var(--transition-fast);
+}
+
+.form-link a {
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+  color: var(--color-primary);
+  transition: var(--transition-fast);
+  position: relative;
+}
+
+.form-link a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: var(--color-primary);
+  transition: width 0.3s ease;
+}
+
+.form-link a:hover::after {
+  width: 100%;
+}
+
+.form-link a:hover {
+  color: var(--color-primary-dark);
+}
+
+/* --- SEPARADOR OPCIONAL --- */
+.form-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: var(--spacing-lg) 0;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.form-divider::before,
+.form-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.form-divider span {
+  padding: 0 var(--spacing-md);
+}
+
+/* --- ANIMACIONES --- */
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
+
+/* --- RESPONSIVE --- */
+@media (max-width: 480px) {
+  .form-container {
+    padding: 0;
+  }
+
+  .form-header__brand-name {
+    font-size: 1.5rem;
+  }
+
+  .form-header__title {
+    font-size: 1.5rem;
+  }
+
+  .form-header__logo {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+/* --- ESTADOS DE CARGA --- */
+.form-container--loading {
+  pointer-events: none;
+  opacity: 0.6;
+}
+

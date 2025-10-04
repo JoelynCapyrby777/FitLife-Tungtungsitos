@@ -1,143 +1,60 @@
-/* src/components/Input.css */
-
+/* --- CONTENEDOR --- */
 .input-group {
-  display: flex;
-  text-align: start;
-  background-color: var(--color-white);
-  margin-top: 0.1rem;
-  position: relative; /* Clave para los pseudo-elementos */
-
-  /* Borde controlado para efecto de línea inferior */
-  border-radius: 7px 7px 0 0; /* Solo redondeamos las esquinas superiores */
-  border: 1px solid var(--color-border);
-  border-bottom: none;
-}
-
-/* Línea inferior estática (la gris que siempre se ve) */
-.input-group::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 1px;
-  background-color: var(--color-border);
-  pointer-events: none;
-}
-
-/* Línea de foco animada (la que aparece al hacer clic) */
-.input-group::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 2px;
-  background-color: var(--color-primary);
-  pointer-events: none;
-  transform: scaleX(0); /* Empieza invisible (escalada a 0) */
-  transition: transform 200ms ease-in-out;
-}
-
-/* Activa la animación de la línea cuando un hijo tiene el foco */
-.input-group:focus-within::after {
-  transform: scaleX(1); /* La línea se escala al 100% */
-}
-
-.input-group__wrapper {
-  flex: auto;
+  position: relative;
+  margin: 0.01rem ;
   width: 100%;
 }
 
-.input-group__label {
-  position: absolute;
-  top: 0.75rem;
-  left: 12px;
-  padding: 0 4px;
-  width: auto;
-  cursor: text;
-  font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
-  background-color: var(--color-white); /* Para que cubra la línea al subir */
-  transition: transform 150ms ease-in-out, top 150ms ease-in-out, color 150ms ease-in-out;
-  transform-origin: top left;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  pointer-events: none; /* Evita que el label intercepte clics */
-}
-
+/* --- INPUT --- */
 .input-group__field {
-  padding: 1.25rem 12px 0.25rem 12px;
   width: 100%;
-  background: transparent;
+  padding: 0.75rem 0.5rem;
   border: none;
-  outline: none;
+  border-bottom: 1px solid var(--color-border);
+  background: transparent;
   font-size: var(--font-size-base);
   color: var(--color-text-primary);
+  outline: none;
+  transition: border-color 0.2s ease-in-out;
 }
 
-/* Mueve y cambia el color del label en foco o con valor */
+/* Línea animada al hacer focus */
+.input-group__field:focus {
+  border-bottom: 2px solid var(--color-primary);
+}
+
+/* --- LABEL FLOTANTE --- */
+.input-group__label {
+  position: absolute;
+  left: 0.5rem;
+  top: 0.75rem;
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  pointer-events: none;
+  transition: all 0.2s ease-in-out;
+  background: var(--color-white);
+  padding: 0 4px;
+}
+
+/* Cuando el input tiene valor o foco → sube */
 .input-group__field:focus + .input-group__label,
 .input-group__field:not(:placeholder-shown) + .input-group__label {
-  transform: scale(0.75);
   top: -0.6rem;
+  font-size: 0.75rem;
   color: var(--color-primary);
 }
 
-/* --- ESTADOS DE ERROR --- */
-
-/* Borde superior y laterales en rojo */
-.input-group--error {
-  border-color: var(--color-error);
+/* --- ESTADO ERROR --- */
+.input-group--error .input-group__field {
+  border-bottom: 2px solid var(--color-error);
 }
 
-/* Línea inferior estática en rojo */
-.input-group--error::before {
-  background-color: var(--color-error);
-}
-
-/* Línea de foco animada en rojo */
-.input-group--error::after {
-  background-color: var(--color-error);
-}
-
-/* Label en rojo cuando hay error y el campo está activo */
-.input-group--error .input-group__field:focus + .input-group__label,
-.input-group--error .input-group__field:not(:placeholder-shown) + .input-group__label {
+.input-group--error .input-group__label {
   color: var(--color-error);
 }
 
 .input-group__error-message {
-  position: absolute;
-  bottom: calc(100% + 8px); /* Posicionamiento robusto arriba del input */
-  left: 0;
-  background-color: var(--color-error);
-  color: var(--color-white);
-  padding: 5px 10px;
-  border-radius: 4px;
   font-size: var(--font-size-sm);
-  white-space: nowrap;
-  z-index: 10;
-  visibility: hidden;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.2s ease-in-out, transform 0.2s ease-in-out, visibility 0.2s;
-}
-
-.input-group__error-message::after {
-  content: '';
-  position: absolute;
-  top: 100%;
-  left: 15px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: var(--color-error) transparent transparent transparent;
-}
-
-/* Muestra el mensaje de error */
-.input-group--error .input-group__error-message {
-  visibility: visible;
-  opacity: 1;
-  transform: translateY(0);
+  color: var(--color-error);
+  margin-top: 0.25rem;
 }

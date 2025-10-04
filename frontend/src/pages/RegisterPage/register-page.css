@@ -1,65 +1,48 @@
-
-/*
-.login-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  margin-bottom: 0.6rem;
-}
-
-.login-logo {
-  height: 40px;
-  width: auto;
-}
-
-.login-appname {
-  font-size: var(--font-size-lg);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-text-primary);
-}
-
-
-
-/* Inputs y password group */
-/*
-.form-container__body {
-  width: 100%;
+.auth-split-layout__feature-list {
+  margin-top: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 1.0rem;
+  gap: 1rem;
+}
+.auth-split-layout__feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.auth-split-layout__feature-icon {
+  font-size: 1.6rem;
 }
 
-/* Botón principal 
-.form-container__body .button {
+/* Inputs pequeños para datos cortos */
+.form-container__body--short-inputs .register-data-row {
+  display: flex;
+  gap: 1rem;
   width: 100%;
-}}*/
-/*
-/* Enlace para registro/login 
-.register-link {
-  text-align: center;
-  font-size: var(--font-size-base);
- 
-}*/
-/*
-.link-button {
-  background: none;
-  border: none;
-  color: var(--color-primary);
-  text-decoration: underline;
-  cursor: pointer;
-  font-size: inherit;
-  
-  margin-left: 2px;
-}*/
+}
+.form-container__body--short-inputs .register-data-row .input-container {
+  flex: 1;
+  min-width: 0;
+}
 
-/* Responsive */
-/*@media (max-width: 500px) {
-  .form-container {
-    max-width: 95vw;
-    padding: 1.2rem 0.5rem 1rem 0.5rem;
+.input-size-small input,
+.input-size-small {
+  font-size: 1rem;
+  padding: 0.4em 0.8em;
+  height: 2.2em;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+@keyframes fadeInSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
   }
-  .login-logo {
-    height: 32px;
+  100% {
+    opacity: 1;
+    transform: translateY(0);
   }
-}*/
+}
+
+.step-2-animate {
+  animation: fadeInSlide 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}

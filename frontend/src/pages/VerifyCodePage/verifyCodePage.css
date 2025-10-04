@@ -33,7 +33,11 @@
 .resend-link {
   background: none;
   border: none;
-  color: #007bff;
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+  color: var(--color-primary);
+  transition: var(--transition-fast);
+  position: relative;
   text-decoration: underline;
   cursor: pointer;
   margin-left: 6px;

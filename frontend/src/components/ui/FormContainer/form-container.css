@@ -1,55 +1,54 @@
-.form-container {
-  max-width: 400px;
-  width: 90%;
-  margin: var(--spacing-xl) auto;
-  padding: var(--spacing-xl);
-  background-color: var(--color-white);
+/* ============================
+   Botón Base
+   ============================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  padding: 0.75rem 1.5rem;
   border-radius: var(--border-radius-md);
-  box-shadow: var(--shadow-md);
-  box-sizing: border-box;
-}
-
-.form-container__header {
-  margin-bottom: var(--spacing-lg);
-  /* 👇 EL ARREGLO DEFINITIVO 👇 */
-  /* Forzamos a que todo dentro del header se alinee a la izquierda por defecto */
-  text-align: left; 
-}
-
-/* Esta clase ahora SOBREESCRIBE la regla anterior para centrar todo. */
-.form-container__header--center {
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
   text-align: center;
 }
 
-.form-container__title {
-  font-size: 1.75rem;
-  font-weight: var(--font-weight-bold);
-  color: var(--color-text-primary);
-  margin: 0 0 var(--spacing-sm) 0;
-  /* Ya no necesitamos text-align aquí porque lo hereda del padre. */
+/* ============================
+   Variantes
+   ============================ */
+
+/* Botón principal (Continuar, Submit, etc.) */
+.btn-primary {
+  background: linear-gradient(90deg, #7C3AED, #9333EA);
+  color: white;
+  width: 100%; /* Ocupar todo el ancho del form */
 }
 
-.form-container__subtitle {
-  font-size: var(--font-size-base);
-  color: var(--color-text-secondary);
-  margin: 0;
-
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(124, 58, 237, 0.4);
 }
 
-.form-container__body {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-lg);
+/* Botón secundario (ej. Cancelar, Volver) */
+.btn-secondary {
+  background: #E5E7EB; /* gris claro */
+  color: #111827;
 }
 
-@media (max-width: 480px) {
-  .form-container {
-    padding: var(--spacing-lg) var(--spacing-md);
-    margin-top: var(--spacing-md);
-  }
-
-  .form-container__title {
-    font-size: 1.5rem;
-  }
+.btn-secondary:hover {
+  background: #D1D5DB;
+  transform: scale(1.03);
 }
 
+/* Botón para login social (Google, etc.) */
+.btn-social {
+  background: white;
+  color: #111827;
+  border: 1px solid #D1D5DB;
+}
+
+.btn-social:hover {
+  background: #F3F4F6;
+}
