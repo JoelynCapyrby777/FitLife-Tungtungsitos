@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Clock3 } from 'lucide-react'; // Lucide icon para el tiempo
 import './routines-page.css';
 
 // Datos de ejemplo para las rutinas
@@ -25,7 +26,10 @@ const RoutinesPage: React.FC = () => {
             <div className="card-content">
               <h2 className="routine-title">{routine.title}</h2>
               <div className="routine-meta">
-                <span>🕒 {routine.duration}</span>
+                <span className="meta-duration">
+                  <Clock3 size={18} style={{ verticalAlign: 'middle', marginRight: 6 }} color="var(--color-primary)" />
+                  {routine.duration}
+                </span>
                 <span className={`difficulty-tag difficulty--${routine.difficulty.toLowerCase()}`}>
                   {routine.difficulty}
                 </span>

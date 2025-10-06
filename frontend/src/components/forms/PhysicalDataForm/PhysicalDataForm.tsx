@@ -28,12 +28,7 @@ const PhysicalDataForm: React.FC<PhysicalDataFormProps> = ({ onSave }) => {
     const height = Number(formData.height);
     const weight = Number(formData.weight);
 
-    if (age <= 1 || height <= 1 || weight <= 1) {
-      showToast('La edad, altura y peso deben ser números positivos.', 'error');
-      return; // Detenemos el envío del formulario
-    }
-    // --- Fin de la validación ---
-
+    
     console.log('Datos físicos enviados:', formData);
     showToast('¡Tus datos han sido guardados con éxito!', 'success');
     
@@ -44,33 +39,7 @@ const PhysicalDataForm: React.FC<PhysicalDataFormProps> = ({ onSave }) => {
 
   return (
     <form onSubmit={handleSubmit} className="form-container__body">
-      <Input
-        label="Edad"
-        type="number"
-        name="age"
-        value={formData.age}
-        onChange={handleChange}
-        min="1" // No permite números negativos o cero
-        required
-      />
-      <Input
-        label="Altura (en cm)"
-        type="number"
-        name="height"
-        value={formData.height}
-        onChange={handleChange}
-        min="1" // No permite números negativos o cero
-        required
-      />
-      <Input
-        label="Peso (en kg)"
-        type="number"
-        name="weight"
-        value={formData.weight}
-        onChange={handleChange}
-        min="1" // No permite números negativos o cero
-        required
-      />
+      
       
       <div className="form-group">
         <label htmlFor="gender" className="form-label">Género</label>

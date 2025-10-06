@@ -74,7 +74,7 @@
 }
 
 .auth-split-layout__right {
-  flex: 1 1 50%;
+  flex: 1 1 60%;
   display: flex;
   align-items: center;
   justify-content: center;

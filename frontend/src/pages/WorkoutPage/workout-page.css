@@ -1,52 +1,104 @@
-/* src/styles/workout-page.css */
-
 .workout-page {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: var(--color-background);
-  padding: var(--spacing-md);
+  background: var(--color-background, #fafafd);
+  padding: 2.8rem 1.1rem 2.8rem 1.1rem;
   box-sizing: border-box;
 }
 
 .workout-card {
   width: 100%;
-  max-width: 600px;
-  background-color: var(--color-white);
-  border-radius: var(--border-radius-lg);
-  box-shadow: var(--shadow-lg);
-  padding: var(--spacing-xl);
+  max-width: 510px;
+  background-color: var(--color-white, #fff);
+  border-radius: 18px;
+  box-shadow: 0 2px 22px 0 rgba(124,58,237,0.07);
+  padding: 2.2rem 1.8rem 2.3rem 1.8rem;
   text-align: center;
-  animation: fadeIn 0.5s ease-in-out;
+  animation: fadeIn 0.5s cubic-bezier(.39,.23,.29,1.19);
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-height: 75vh;
+  position: relative;
 }
 
 .workout-progress {
-  font-size: var(--font-size-base);
-  font-weight: var(--font-weight-bold);
-  color: var(--color-primary);
-  margin-bottom: var(--spacing-xl);
+  font-size: 1.13rem;
+  font-weight: 700;
+  color: var(--color-primary, #7c3aed);
+  margin-bottom: 2.2rem;
+  letter-spacing: 0.2px;
 }
 
 .exercise-focus {
-  margin-bottom: var(--spacing-xxl);
+  margin-bottom: 2.8rem;
 }
 
 .exercise-name-large {
-  font-size: 3rem;
-  font-weight: var(--font-weight-bold);
-  color: var(--color-text-primary);
-  margin: 0 0 var(--spacing-md) 0;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--color-text-primary, #24124d);
+  margin: 0 0 1.1rem 0;
+  letter-spacing: -1px;
 }
 
 .exercise-sets-reps-large {
-  font-size: 1.75rem;
-  color: var(--color-text-secondary);
+  font-size: 1.18rem;
+  color: var(--color-text-secondary, #7c6a99);
   margin: 0;
+  font-weight: 500;
 }
 
 .workout-navigation {
   display: flex;
   justify-content: space-between;
-  gap: var(--spacing-md);
+  gap: 1.2rem;
+}
+
+.workout-navigation button,
+.workout-navigation .button {
+  min-width: 0;
+  flex: 1 1 0;
+}
+
+@media (max-width: 700px) {
+  .workout-card {
+    max-width: 99vw;
+    padding: 1.1rem 0.6rem 1.5rem 0.6rem;
+    border-radius: 10px;
+  }
+  .exercise-name-large {
+    font-size: 1.25rem;
+  }
+  .exercise-sets-reps-large {
+    font-size: 1.03rem;
+  }
+  .workout-progress {
+    margin-bottom: 1.1rem;
+    font-size: 0.99rem;
+  }
+  .exercise-focus {
+    margin-bottom: 1.3rem;
+  }
+  .workout-navigation {
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .workout-page {
+    padding: 0.5rem 0.1rem;
+  }
+  .workout-card {
+    padding: 0.45rem 0.11rem 0.8rem 0.11rem;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

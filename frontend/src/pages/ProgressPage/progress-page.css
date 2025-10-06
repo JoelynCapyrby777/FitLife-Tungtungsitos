@@ -1,51 +1,70 @@
-/* src/styles/progress-page.css */
-
 .progress-page {
-  padding: var(--spacing-lg) var(--spacing-xl);
-  animation: fadeIn 0.5s ease-in-out;
+  max-width: 700px;
+  margin: 6.7rem auto 2.7rem auto;
+  padding: 2.5rem 2rem 2.5rem 2rem;
+  background: var(--color-white, #fff);
+  box-shadow: 0 2px 22px 0 rgba(124,58,237,0.07);
+  border-radius: 18px;
+  animation: fadeIn 0.45s cubic-bezier(.39,.23,.29,1.19);
+  min-height: 82vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .progress-header {
   text-align: center;
-  margin-bottom: var(--spacing-xxl);
+  margin-bottom: 2.4rem;
 }
 
 .progress-title {
-  font-size: 2.5rem;
-  font-weight: var(--font-weight-bold);
-  color: var(--color-text-primary);
+  font-size: 2.2rem;
+  font-weight: var(--font-weight-bold, 700);
+  color: var(--color-text-primary, #24124d);
 }
 
 .progress-subtitle {
-  font-size: 1.2rem;
-  color: var(--color-text-secondary);
+  font-size: 1.12rem;
+  color: var(--color-text-secondary, #7c6a99);
+  margin-top: 0.3rem;
 }
 
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: var(--spacing-lg);
-  margin-bottom: var(--spacing-xxl);
+  gap: 1.6rem;
+  margin-bottom: 2.4rem;
 }
 
 .stat-card {
-  background-color: var(--color-white);
-  padding: var(--spacing-lg);
-  border-radius: var(--border-radius-md);
+  background-color: var(--color-white, #fff);
+  padding: 1.3rem 1.1rem 1.1rem 1.1rem;
+  border-radius: 13px;
   text-align: center;
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-border, #ebe9f7);
+  box-shadow: 0 1px 7px 0 rgba(124,58,237,0.04);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+.stat-icon {
+  margin-bottom: 0.22rem;
+  color: var(--color-primary, #7c3aed);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .stat-value {
   display: block;
-  font-size: 3rem;
-  font-weight: var(--font-weight-bold);
-  color: var(--color-primary);
+  font-size: 2.45rem;
+  font-weight: var(--font-weight-bold, 700);
+  color: var(--color-primary, #7c3aed);
 }
 
 .stat-label {
-  font-size: var(--font-size-base);
-  color: var(--color-text-secondary);
+  font-size: 1.05rem;
+  color: var(--color-text-secondary, #7c6a99);
 }
 
 .history-section {
@@ -54,37 +73,42 @@
 }
 
 .history-title {
-  font-size: 1.75rem;
-  font-weight: var(--font-weight-bold);
-  margin-bottom: var(--spacing-lg);
+  font-size: 1.18rem;
+  font-weight: var(--font-weight-bold, 700);
+  margin-bottom: 1.1rem;
 }
 
 .no-history-message {
   text-align: center;
-  color: var(--color-text-secondary);
-  padding: var(--spacing-xl);
-  background-color: var(--color-white);
-  border-radius: var(--border-radius-md);
+  color: var(--color-text-secondary, #7c6a99);
+  padding: 1.3rem;
+  background-color: var(--color-white, #fff);
+  border-radius: 13px;
+  box-shadow: 0 1px 7px 0 rgba(124,58,237,0.04);
 }
 
 .history-list {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
+  gap: 1.05rem;
 }
 
 .history-item {
   display: flex;
   align-items: center;
-  background-color: var(--color-white);
-  padding: var(--spacing-md);
-  border-radius: var(--border-radius-md);
-  border: 1px solid var(--color-border);
+  background-color: var(--color-white, #fff);
+  padding: 1.1rem 1.1rem;
+  border-radius: 13px;
+  border: 1px solid var(--color-border, #ebe9f7);
+  box-shadow: 0 1px 7px 0 rgba(124,58,237,0.04);
 }
 
 .history-icon {
-  font-size: 1.5rem;
-  margin-right: var(--spacing-lg);
+  font-size: 1.33rem;
+  margin-right: 1.15rem;
+  color: var(--color-primary, #7c3aed);
+  display: flex;
+  align-items: center;
 }
 
 .history-details {
@@ -93,11 +117,42 @@
 }
 
 .history-workout-title {
-  font-weight: var(--font-weight-bold);
-  font-size: 1.1rem;
+  font-weight: var(--font-weight-bold, 600);
+  font-size: 1.08rem;
+  color: var(--color-text-primary, #24124d);
 }
 
 .history-workout-date {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-secondary);
+  font-size: 0.97rem;
+  color: var(--color-text-secondary, #7c6a99);
+}
+
+@media (max-width: 900px) {
+  .progress-page {
+    max-width: 97vw;
+    padding: 1.5rem 0.7rem 2rem 0.7rem;
+  }
+  .progress-header {
+    margin-bottom: 1.6rem;
+  }
+}
+@media (max-width: 500px) {
+  .progress-page {
+    padding: 0.5rem 0.05rem 1rem 0.05rem;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .progress-title {
+    font-size: 1.18rem;
+  }
+  .progress-subtitle {
+    font-size: 0.97rem;
+  }
+  .stat-card {
+    padding: 0.7rem 0.5rem;
+  }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

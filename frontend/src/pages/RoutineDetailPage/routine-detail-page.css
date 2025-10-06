@@ -1,62 +1,79 @@
-/* src/styles/routine-detail-page.css */
-
 .routine-detail-page {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: var(--spacing-lg) var(--spacing-xl);
-  animation: fadeIn 0.5s ease-in-out;
+  max-width: 580px;
+  margin: 2.5rem auto;
+  padding: 2.5rem 2.2rem 2.5rem 2.2rem;
+  background: var(--color-white, #fff);
+  box-shadow: 0 2px 22px 0 rgba(124,58,237,0.07);
+  border-radius: 18px;
+  animation: fadeIn 0.45s cubic-bezier(.39,.23,.29,1.19);
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .detail-header {
   text-align: center;
-  margin-bottom: var(--spacing-xxl);
-  border-bottom: 1px solid var(--color-border);
-  padding-bottom: var(--spacing-lg);
+  margin-bottom: 2.3rem;
+  border-bottom: 1px solid var(--color-border, #ebe9f7);
+  padding-bottom: 1.8rem;
 }
 
 .detail-title {
-  font-size: 2.5rem;
-  font-weight: var(--font-weight-bold);
-  color: var(--color-text-primary);
-  margin-bottom: var(--spacing-sm);
+  font-size: 2.15rem;
+  font-weight: var(--font-weight-bold, 700);
+  color: var(--color-text-primary, #24124d);
+  margin-bottom: 0.3rem;
 }
 
 .detail-description {
-  font-size: 1.2rem;
-  color: var(--color-text-secondary);
-  max-width: 600px;
+  font-size: 1.07rem;
+  color: var(--color-text-secondary, #7c6a99);
+  max-width: 500px;
   margin: 0 auto;
 }
 
+.start-workout-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2.3rem;
+}
+
 .exercises-title {
-  font-size: 1.75rem;
-  font-weight: var(--font-weight-bold);
-  margin-bottom: var(--spacing-lg);
-  color: var(--color-text-primary);
+  font-size: 1.28rem;
+  font-weight: var(--font-weight-bold, 700);
+  margin-bottom: 1.1rem;
+  color: var(--color-text-primary, #24124d);
+  letter-spacing: -0.5px;
 }
 
 .exercises-list {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
-  margin-bottom: var(--spacing-xl);
+  gap: 1.14rem;
+  margin-bottom: 1.8rem;
 }
 
 .exercise-item {
   display: flex;
   align-items: center;
-  background-color: var(--color-white);
-  padding: var(--spacing-md);
-  border-radius: var(--border-radius-md);
-  border: 1px solid var(--color-border);
+  background-color: var(--color-background, #fafafd);
+  padding: 1.1rem 1.2rem;
+  border-radius: 12px;
+  border: 1px solid var(--color-border, #ebe9f7);
+  box-shadow: 0 1px 7px 0 rgba(124,58,237,0.06);
+  transition: box-shadow 0.17s;
+}
+.exercise-item:hover {
+  box-shadow: 0 4px 18px 0 rgba(124,58,237,0.09);
 }
 
 .exercise-number {
-  font-size: 1.5rem;
-  font-weight: var(--font-weight-bold);
-  color: var(--color-primary);
-  margin-right: var(--spacing-lg);
-  min-width: 30px;
+  font-size: 1.38rem;
+  font-weight: var(--font-weight-bold, 700);
+  color: var(--color-primary, #7c3aed);
+  margin-right: 1.5rem;
+  min-width: 36px;
   text-align: center;
 }
 
@@ -65,24 +82,244 @@
 }
 
 .exercise-name {
-  font-size: 1.1rem;
-  font-weight: var(--font-weight-bold);
-  margin: 0 0 0.25rem 0;
+  font-size: 1.09rem;
+  font-weight: var(--font-weight-bold, 600);
+  margin: 0 0 0.16rem 0;
 }
 
 .exercise-sets-reps {
-  font-size: var(--font-size-base);
-  color: var(--color-text-secondary);
+  font-size: 0.97rem;
+  color: var(--color-text-secondary, #7c6a99);
   margin: 0;
 }
 
-.back-link {
-  display: inline-block;
-  margin-top: var(--spacing-lg);
-  color: var(--color-primary);
-  text-decoration: none;
-  font-weight: var(--font-weight-bold);
+.back-arrow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 1.05rem 0.45rem 0.55rem;
+  background: none;
+  border: none;
+  color: var(--color-primary, #7c3aed);
+  font-size: 1.09rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 1.2rem;
+  margin-left: -0.5rem;
+  transition: background 0.13s;
 }
-.back-link:hover {
+.back-arrow-btn:hover,
+.back-arrow-btn:focus {
+  background: rgba(124,58,237, 0.07);
   text-decoration: underline;
+}
+.back-arrow-icon {
+  font-size: 1.33em;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+.back-arrow-label {
+  font-size: 1em;
+}
+
+@media (max-width: 900px) {
+  .routine-detail-page {
+    max-width: 97vw;
+    padding: 1.5rem 0.7rem 2rem 0.7rem;
+  }
+  .detail-title {
+    font-size: 1.33rem;
+  }
+  .detail-header {
+    padding-bottom: 1.1rem;
+    margin-bottom: 1.4rem;
+  }
+  .exercises-title {
+    font-size: 1.05rem;
+  }
+  .exercise-item {
+    padding: 0.7rem 0.5rem;
+  }
+}
+@media (max-width: 500px) {
+  .routine-detail-page {
+    padding: 0.7rem 0.07rem;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .detail-title {
+    font-size: 1.08rem;
+  }
+  .back-arrow-btn {
+    font-size: 0.97rem;
+    padding: 0.38rem 0.7rem 0.38rem 0.38rem;
+  }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}.routine-detail-page {
+  max-width: 580px;
+  margin: 2.5rem auto;
+  padding: 2.5rem 2.2rem 2.5rem 2.2rem;
+  background: var(--color-white, #fff);
+  box-shadow: 0 2px 22px 0 rgba(124,58,237,0.07);
+  border-radius: 18px;
+  animation: fadeIn 0.45s cubic-bezier(.39,.23,.29,1.19);
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-header {
+  text-align: center;
+  margin-bottom: 2.3rem;
+  border-bottom: 1px solid var(--color-border, #ebe9f7);
+  padding-bottom: 1.8rem;
+}
+
+.detail-title {
+  font-size: 2.15rem;
+  font-weight: var(--font-weight-bold, 700);
+  color: var(--color-text-primary, #24124d);
+  margin-bottom: 0.3rem;
+}
+
+.detail-description {
+  font-size: 1.07rem;
+  color: var(--color-text-secondary, #7c6a99);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.start-workout-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2.3rem;
+}
+
+.exercises-title {
+  font-size: 1.28rem;
+  font-weight: var(--font-weight-bold, 700);
+  margin-bottom: 1.1rem;
+  color: var(--color-text-primary, #24124d);
+  letter-spacing: -0.5px;
+}
+
+.exercises-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.14rem;
+  margin-bottom: 1.8rem;
+}
+
+.exercise-item {
+  display: flex;
+  align-items: center;
+  background-color: var(--color-background, #fafafd);
+  padding: 1.1rem 1.2rem;
+  border-radius: 12px;
+  border: 1px solid var(--color-border, #ebe9f7);
+  box-shadow: 0 1px 7px 0 rgba(124,58,237,0.06);
+  transition: box-shadow 0.17s;
+}
+.exercise-item:hover {
+  box-shadow: 0 4px 18px 0 rgba(124,58,237,0.09);
+}
+
+.exercise-number {
+  font-size: 1.38rem;
+  font-weight: var(--font-weight-bold, 700);
+  color: var(--color-primary, #7c3aed);
+  margin-right: 1.5rem;
+  min-width: 36px;
+  text-align: center;
+}
+
+.exercise-details {
+  flex-grow: 1;
+}
+
+.exercise-name {
+  font-size: 1.09rem;
+  font-weight: var(--font-weight-bold, 600);
+  margin: 0 0 0.16rem 0;
+}
+
+.exercise-sets-reps {
+  font-size: 0.97rem;
+  color: var(--color-text-secondary, #7c6a99);
+  margin: 0;
+}
+
+.back-arrow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 1.05rem 0.45rem 0.55rem;
+  background: none;
+  border: none;
+  color: var(--color-primary, #7c3aed);
+  font-size: 1.09rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: 1.2rem;
+  margin-left: -0.5rem;
+  transition: background 0.13s;
+}
+.back-arrow-btn:hover,
+.back-arrow-btn:focus {
+  background: rgba(124,58,237, 0.07);
+  text-decoration: underline;
+}
+.back-arrow-icon {
+  font-size: 1.33em;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+.back-arrow-label {
+  font-size: 1em;
+}
+
+@media (max-width: 900px) {
+  .routine-detail-page {
+    max-width: 97vw;
+    padding: 1.5rem 0.7rem 2rem 0.7rem;
+  }
+  .detail-title {
+    font-size: 1.33rem;
+  }
+  .detail-header {
+    padding-bottom: 1.1rem;
+    margin-bottom: 1.4rem;
+  }
+  .exercises-title {
+    font-size: 1.05rem;
+  }
+  .exercise-item {
+    padding: 0.7rem 0.5rem;
+  }
+}
+@media (max-width: 500px) {
+  .routine-detail-page {
+    padding: 0.7rem 0.07rem;
+    border-radius: 0;
+    box-shadow: none;
+  }
+  .detail-title {
+    font-size: 1.08rem;
+  }
+  .back-arrow-btn {
+    font-size: 0.97rem;
+    padding: 0.38rem 0.7rem 0.38rem 0.38rem;
+  }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

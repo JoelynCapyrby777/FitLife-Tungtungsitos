@@ -1,8 +1,11 @@
-/* src/styles/home-page.css */
-
 .homepage-dashboard {
-  padding: var(--spacing-lg) var(--spacing-xl);
+  padding: 7rem 10.5rem 2rem 10.5rem;
+  gap: 2rem;
+  min-height: 70vh;
+  background: var(--color-background, #fafafd);
   animation: fadeIn 0.5s ease-in-out;
+  box-sizing: border-box;
+  font-family: var(--font-family);
 }
 
 @keyframes fadeIn {
@@ -12,85 +15,114 @@
 
 .dashboard-header {
   text-align: center;
-  margin-bottom: var(--spacing-xxl);
+  margin-bottom: 2.5rem;
 }
 
 .dashboard-title {
-  font-size: 2rem;
+  font-size: 2.4rem;
   font-weight: var(--font-weight-bold);
-  color: var(--color-text-primary);
-  margin-bottom: var(--spacing-sm);
+  color: var(--color-primary);
+  margin-bottom: 0.5rem;
+  letter-spacing: -1px;
 }
 
 .dashboard-subtitle {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   color: var(--color-text-secondary);
-  max-width: 600px;
+  max-width: 620px;
   margin: 0 auto;
+  line-height: 1.6;
 }
 
 .dashboard-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: var(--spacing-lg);
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2.2rem;
+  margin-top: 1rem;
 }
 
 .dashboard-card {
   background-color: var(--color-white);
-  border-radius: var(--border-radius-md);
-  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-lg, 18px);
+  padding: 2.2rem 1.8rem 1.8rem 1.8rem;
   border: 1px solid var(--color-border);
   text-align: left;
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  transition: 
+    transform 0.22s cubic-bezier(.39,.23,.29,1.19),
+    box-shadow 0.18s;
   text-decoration: none;
+  box-shadow: var(--shadow-sm, 0 2px 10px rgba(60,30,90,0.06));
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-height: 220px;
+  cursor: pointer;
+  position: relative;
 }
 
-.dashboard-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-lg);
+.dashboard-card:hover,
+.dashboard-card:focus {
+  transform: translateY(-8px) scale(1.025);
+  box-shadow: var(--shadow-lg, 0 12px 32px rgba(92, 92, 246, 0.11));
+  border-color: var(--color-primary-light, #d1c4e9);
+  z-index: 1;
 }
 
 .card-icon {
-  font-size: 2rem;
-  margin-bottom: var(--spacing-md);
-  background-color: var(--color-background);
-  width: 50px;
-  height: 50px;
-  border-radius: 12px;
+  font-size: 2.1rem;
+  margin-bottom: 1.2rem;
+  background-color: rgba(139, 92, 246, 0.10);
+  color: var(--color-primary);
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: box-shadow 0.2s, background 0.2s;
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.08);
+}
+
+.dashboard-card:hover .card-icon {
+  box-shadow: 0 6px 18px rgba(124, 58, 237, 0.12);
+  background: rgba(124, 58, 237, 0.12);
 }
 
 .card-title {
-  font-size: 1.25rem;
+  font-size: 1.28rem;
   font-weight: var(--font-weight-bold);
   color: var(--color-text-primary);
-  margin: 0 0 var(--spacing-sm) 0;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.5px;
 }
 
 .card-description {
   font-size: var(--font-size-base);
   color: var(--color-text-secondary);
   margin: 0;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
-/* Estilo especial para la tarjeta principal (Call to Action) */
+/* Call to Action card */
 .cta-card {
   background-color: var(--color-primary);
   color: var(--color-white);
   border: none;
-  cursor: pointer;
-  font-family: inherit; /* Hereda la fuente del body */
+  font-family: inherit;
+  box-shadow: 0 8px 28px rgba(139,92,246,0.19);
+  align-items: flex-start;
 }
 
-.cta-card:hover {
+.cta-card:hover,
+.cta-card:focus {
   background-color: var(--color-primary-dark);
+  color: var(--color-white);
+  box-shadow: 0 16px 40px rgba(139,92,246,0.27);
 }
 
 .cta-card .card-icon {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.23);
+  color: var(--color-white);
 }
 
 .cta-card .card-title,
@@ -98,7 +130,34 @@
   color: var(--color-white);
 }
 
-/* Estilo para las tarjetas de ejemplo */
+/* Placeholder card for future features */
 .placeholder-card {
-  opacity: 0.7;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .homepage-dashboard {
+    padding-left: 2.2rem;
+    padding-right: 2.2rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .homepage-dashboard {
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+  }
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .homepage-dashboard {
+    padding: 1.2rem 0.5rem;
+  }
+  .dashboard-title { font-size: 1.35rem; }
+  .dashboard-card { padding: 1.1rem 0.7rem; }
 }

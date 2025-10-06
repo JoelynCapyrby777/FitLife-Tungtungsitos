@@ -1,9 +1,9 @@
 import React from 'react';
-import { useParams, Link ,useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import './routine-detail-page.css';
 import { Button } from '../../components/ui';
 
-// Expandimos nuestros datos de ejemplo para incluir ejercicios
+// Datos de ejemplo para las rutinas
 const routinesData = {
   'full-body-1': { 
     title: 'Fuerza Total para Principiantes', 
@@ -25,11 +25,10 @@ const routinesData = {
       { name: 'Escaladores (Mountain Climbers)', sets: '4', reps: '45 seg' },
     ]
   },
-  // ... podrías añadir los detalles de las otras rutinas aquí
+  // ...más rutinas aquí según sea necesario
 };
 
 const RoutineDetailPage: React.FC = () => {
-  // Obtenemos el ID de la rutina desde la URL, ej: "full-body-1"
   const { routineId } = useParams<{ routineId: string }>();
   const routine = routineId ? routinesData[routineId as keyof typeof routinesData] : null;
   const navigate = useNavigate();
@@ -38,19 +37,26 @@ const RoutineDetailPage: React.FC = () => {
     return (
       <div className="routine-detail-page">
         <h1>Rutina no encontrada</h1>
-        <Link to="/routines">Volver a la lista de rutinas</Link>
+        <button className="back-arrow-btn" onClick={() => navigate(-1)}>
+          <span className="back-arrow-icon">&#8592;</span> Volver
+        </button>
       </div>
     );
   }
 
   return (
     <div className="routine-detail-page">
+      <button className="back-arrow-btn" onClick={() => navigate(-1)}>
+        <span className="back-arrow-icon">&#8592;</span>
+        <span className="back-arrow-label">Regresar</span>
+      </button>
+
       <header className="detail-header">
         <h1 className="detail-title">{routine.title}</h1>
         <p className="detail-description">{routine.description}</p>
       </header>
 
-    <div className="start-workout-container">
+      <div className="start-workout-container">
         <Button styleType="primary" onClick={() => navigate(`/workout/${routineId}`)}>
           ¡Empezar a Entrenar!
         </Button>
@@ -70,9 +76,6 @@ const RoutineDetailPage: React.FC = () => {
           </div>
         ))}
       </div>
-       <Link to="/routines" className="back-link">
-        &larr; Volver a todas las rutinas
-      </Link>
     </div>
   );
 };

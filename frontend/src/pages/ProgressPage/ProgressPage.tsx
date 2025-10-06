@@ -1,5 +1,6 @@
 import React from 'react';
 import { useProgress } from '../../context/ProgressContext';
+import { Dumbbell, Flame } from 'lucide-react';
 import './progress-page.css';
 
 const ProgressPage: React.FC = () => {
@@ -14,10 +15,12 @@ const ProgressPage: React.FC = () => {
 
       <div className="stats-grid">
         <div className="stat-card">
+          <span className="stat-icon"><Dumbbell size={32} /></span>
           <span className="stat-value">{history.length}</span>
           <span className="stat-label">Rutinas Completadas</span>
         </div>
         <div className="stat-card">
+          <span className="stat-icon"><Flame size={32} /></span>
           <span className="stat-value">0</span>
           <span className="stat-label">Días de Racha</span>
         </div>
@@ -31,7 +34,7 @@ const ProgressPage: React.FC = () => {
           <div className="history-list">
             {history.map((workout) => (
               <div className="history-item" key={workout.id}>
-                <div className="history-icon">💪</div>
+                <div className="history-icon"><Dumbbell size={24} /></div>
                 <div className="history-details">
                   <span className="history-workout-title">{workout.title}</span>
                   <span className="history-workout-date">{workout.date}</span>

@@ -20,6 +20,8 @@ import {
   WorkoutPage,
   ProgressPage
 } from '../pages';
+import HomePageLoading from '../pages/HomeP/HomeLandingPage';
+import AboutUsPage from '../pages/AboutUsPage/AboutUsPage';
 
 // Renombramos a AppRouter para consistencia con la nueva carpeta /router
 const AppRouter = () => {
@@ -34,6 +36,8 @@ const AppRouter = () => {
         <Route path="/recuperar" element={<RecoverAccountPage />} />
         <Route path="/verificar" element={<VerifyCodePage />} />
         <Route path="/cambiarContraseña" element={<ChangePasswordPage />} />
+        <Route path="/PaginaPrincipal" element={<HomePageLoading/>} />
+        <Route path="/Nosotros" element={<AboutUsPage/>} />
       </Route>
 
       {/* --- ZONA VIP (PRIVADA) --- */}
