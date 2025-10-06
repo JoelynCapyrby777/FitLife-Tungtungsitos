@@ -1,7 +1,7 @@
 .routine-detail-page {
   max-width: 580px;
   margin: 2.5rem auto;
-  padding: 2.5rem 2.2rem 2.5rem 2.2rem;
+  margin: 6.7rem auto 2.7rem auto;
   background: var(--color-white, #fff);
   box-shadow: 0 2px 22px 0 rgba(124,58,237,0.07);
   border-radius: 18px;
