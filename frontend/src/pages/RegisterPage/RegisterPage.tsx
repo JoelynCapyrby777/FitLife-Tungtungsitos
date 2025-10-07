@@ -25,9 +25,10 @@ const RegisterPage: React.FC = () => {
 
   // Step 2
   const [nombre, setNombre] = useState<string>("");
-  const [pesoKg, setPesoKg] = useState<number | "">("");
-  const [edad, setEdad] = useState<number | "">("");
-  const [estaturaMetros, setEstaturaMetros] = useState<number | "">("");
+  // inputs pueden ser vacío (""), pero al enviar deben convertirse a número.
+  const [pesoKg, setPesoKg] = useState<string>("");
+  const [edad, setEdad] = useState<string>("");
+  const [estaturaMetros, setEstaturaMetros] = useState<string>("");
 
   const [errorForInput, setErrorForInput] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -64,77 +65,31 @@ const RegisterPage: React.FC = () => {
     event.preventDefault();
     setErrorForInput("");
 
-    if (!nombre.trim()) {
-      showToast("Por favor, ingresa tu nombre.", "error");
+    // Convertir a número antes de validar y enviar
+    const pesoNumber = Number(pesoKg);
+    const edadNumber = Number(edad);
+    const estaturaNumber = Number(estaturaMetros);
+
+    if (!nombre.trim() || nombre.length < 2 || nombre.length > 40 || !/^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$/.test(nombre)) {
+      showToast("Ingresa un nombre válido (solo letras, 2-40 caracteres).", "error");
       setErrorForInput("nombre");
       return;
     }
-    if (!pesoKg || pesoKg <= 0) {
-      showToast("Por favor, ingresa tu peso en kilos.", "error");
+    if (!pesoKg || isNaN(pesoNumber) || pesoNumber < 20 || pesoNumber > 300) {
+      showToast("El peso debe estar entre 20 y 300 kg.", "error");
       setErrorForInput("pesoKg");
       return;
     }
-    if (!edad || edad <= 0) {
-      showToast("Por favor, ingresa tu edad.", "error");
+    if (!edad || isNaN(edadNumber) || edadNumber < 5 || edadNumber > 120) {
+      showToast("La edad debe estar entre 5 y 120 años.", "error");
       setErrorForInput("edad");
       return;
     }
-    if (!estaturaMetros || estaturaMetros <= 0) {
-      showToast("Por favor, ingresa tu estatura en metros.", "error");
+    if (!estaturaMetros || isNaN(estaturaNumber) || estaturaNumber < 1.0 || estaturaNumber > 2.5) {
+      showToast("La estatura debe estar entre 1.0 y 2.5 metros.", "error");
       setErrorForInput("estaturaMetros");
       return;
     }
-
-    const handleStep2Submit = async (event: React.FormEvent<HTMLFormElement>) => {
-      event.preventDefault();
-      setErrorForInput("");
-
-      // Validar nombre
-      if (!nombre.trim() || nombre.length < 2 || nombre.length > 40 || !/^[a-zA-ZáéíóúÁÉÍÓÚüÜñÑ\s]+$/.test(nombre)) {
-        showToast("Ingresa un nombre válido (solo letras, 2-40 caracteres).", "error");
-        setErrorForInput("nombre");
-        return;
-      }
-      // Validar peso
-      if (!pesoKg || pesoKg < 20 || pesoKg > 300) {
-        showToast("El peso debe estar entre 20 y 300 kg.", "error");
-        setErrorForInput("pesoKg");
-        return;
-      }
-      // Validar edad
-      if (!edad || edad < 5 || edad > 120) {
-        showToast("La edad debe estar entre 5 y 120 años.", "error");
-        setErrorForInput("edad");
-        return;
-      }
-      // Validar estatura
-      if (!estaturaMetros || estaturaMetros < 1.0 || estaturaMetros > 2.5) {
-        showToast("La estatura debe estar entre 1.0 y 2.5 metros.", "error");
-        setErrorForInput("estaturaMetros");
-        return;
-      }
-
-      setIsLoading(true);
-
-      try {
-        const userData = {
-          correo: email,
-          contrasena: password,
-          nombre,
-          pesoKg,
-          edad,
-          estaturaMetros,
-        };
-
-        await registerUser(userData);
-        showToast("¡Registro exitoso! Ahora inicia sesión.", "success");
-        navigate("/");
-      } catch (error: any) {
-        showToast(error.message || "No se pudo completar el registro.", "error");
-      } finally {
-        setIsLoading(false);
-      }
-    };
 
     setIsLoading(true);
 
@@ -143,9 +98,9 @@ const RegisterPage: React.FC = () => {
         correo: email,
         contrasena: password,
         nombre,
-        pesoKg,
-        edad,
-        estaturaMetros,
+        pesoKg: pesoNumber,
+        edad: edadNumber,
+        estaturaMetros: estaturaNumber,
       };
 
       await registerUser(userData);
@@ -174,7 +129,6 @@ const RegisterPage: React.FC = () => {
           </div>
           <h3 className="form-header__title">Crear Cuenta</h3>
           <p className="form-header__subtitle">{step === 1 ? "¡Es rápido y fácil!" : "Cuéntanos más sobre ti"}</p>
-          {/* Tabs solo aparecen en el primer paso */}
           {step === 1 && (
             <AuthTabs activeTab={activeTab} onTabClick={handleTabClick} />
           )}
@@ -216,7 +170,6 @@ const RegisterPage: React.FC = () => {
                 onChange={(e) => setNombre(e.target.value)}
                 error={errorForInput === 'nombre' ? 'Error' : ''}
                 maxLength={40}
-
               />
               <div className="register-data-row">
                 <Input
@@ -224,13 +177,11 @@ const RegisterPage: React.FC = () => {
                   type="number"
                   name="pesoKg"
                   value={pesoKg}
-                  onChange={(e) => {
-                    const val = Number(e.target.value);
-                    if (val >= 20 && val <= 300) setPesoKg(val);
-                  }}
+                  onChange={(e) => setPesoKg(e.target.value)}
                   error={errorForInput === 'pesoKg' ? 'Error' : ''}
-                  min={40}
+                  min={20}
                   max={300}
+                  step={1}
                 />
 
                 <Input
@@ -238,14 +189,11 @@ const RegisterPage: React.FC = () => {
                   type="number"
                   name="edad"
                   value={edad}
-                  onChange={(e) => {
-                    const val = Number(e.target.value);
-                    if (val >= 5 && val <= 120) setEdad(val);
-                  }}
+                  onChange={(e) => setEdad(e.target.value)}
                   error={errorForInput === 'edad' ? 'Error' : ''}
-                  min={15}
+                  min={5}
                   max={120}
-
+                  step={1}
                 />
 
                 <Input
@@ -253,22 +201,16 @@ const RegisterPage: React.FC = () => {
                   type="number"
                   name="estaturaMetros"
                   value={estaturaMetros}
-                  onChange={(e) => {
-                    const val = Number(e.target.value);
-                    if (val >= 1.0 && val <= 2.5) setEstaturaMetros(val);
-                  }}
+                  onChange={(e) => setEstaturaMetros(e.target.value)}
                   error={errorForInput === 'estaturaMetros' ? 'Error' : ''}
                   min={1.0}
                   max={2.5}
                   step={0.01}
-
                 />
-
               </div>
               <Button type="submit" isLoading={isLoading}>
                 Crear cuenta
               </Button>
-
             </form>
           )}
         </div>

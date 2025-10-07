@@ -47,6 +47,13 @@ const LoginPage: React.FC = () => {
 
     try {
       const authData = await loginUser(email, password);
+      // Guarda el token en localStorage
+      if (authData?.token) {
+        localStorage.setItem('token', authData.token);
+      }
+      
+      if (authData?.user) localStorage.setItem('user', JSON.stringify(authData.user));
+
       showToast('¡Bienvenido de nuevo!', 'success');
       login(authData);
       navigate('/');

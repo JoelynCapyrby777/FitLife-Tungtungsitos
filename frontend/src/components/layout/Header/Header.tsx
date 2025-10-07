@@ -76,10 +76,6 @@ const Header: React.FC = () => {
               <Utensils size={22} style={{ marginRight: 10, verticalAlign: 'middle' }} />
               Comidas
             </NavLink>
-            <NavLink to="/notifications" className="header__link header__notifications-link" onClick={closeMenu}>
-              <Bell size={22} style={{ marginRight: 10, verticalAlign: 'middle' }} />
-              Notificaciones
-            </NavLink>
             <button onClick={handleLogout} className="header__link header__link--button">
               <LogOut size={22} style={{ marginRight: 10, verticalAlign: 'middle' }} />
               Cerrar Sesión

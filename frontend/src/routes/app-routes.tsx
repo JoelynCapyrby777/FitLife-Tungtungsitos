@@ -23,6 +23,7 @@ import {
 import HomePageLoading from '../pages/HomeP/HomeLandingPage';
 import AboutUsPage from '../pages/AboutUsPage/AboutUsPage';
 
+
 // Renombramos a AppRouter para consistencia con la nueva carpeta /router
 const AppRouter = () => {
   return (
@@ -48,6 +49,7 @@ const AppRouter = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="profile" element={<ProfilePage />} />
+          
           <Route path="routines" element={<RoutinesPage />} />
           <Route path="routines/:routineId" element={<RoutineDetailPage />} />
           <Route path="progress" element={<ProgressPage />} />

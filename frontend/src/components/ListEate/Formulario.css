@@ -1,0 +1,81 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  max-width: 420px;
+  margin: 0 auto var(--spacing-lg) auto;
+  padding: var(--spacing-lg) var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  background: var(--color-white);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+}
+
+.heading {
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-primary);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  text-align: center;
+}
+
+.lista {
+  margin: 0 auto var(--spacing-xl) auto;
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-md);
+  background: var(--color-white);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-border);
+  max-width: 700px;
+}
+
+.ul {
+  padding-left: 0;
+  list-style: none;
+}
+
+.item {
+  margin-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--spacing-sm);
+}
+
+.nombre {
+  font-weight: 600;
+  font-size: var(--font-size-base);
+}
+
+.ingredientes {
+  color: var(--color-text-secondary);
+}
+
+.nutrientes {
+  font-size: 0.96em;
+  margin-left: var(--spacing-xs);
+  color: var(--color-brand-secondary);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+}
+
+.empty {
+  color: var(--color-text-secondary);
+  font-style: italic;
+  margin: var(--spacing-sm) 0 0 0;
+}
+
+.resumen {
+  margin: 0 auto var(--spacing-lg) auto;
+  padding: var(--spacing-md) var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  background: var(--color-background);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--color-primary-light);
+  max-width: 350px;
+}
+
+.row {
+  margin-bottom: var(--spacing-xs);
+  font-size: 1rem;
+  color: var(--color-brand-secondary);
+}
