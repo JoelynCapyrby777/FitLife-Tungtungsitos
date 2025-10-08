@@ -20,8 +20,9 @@ import {
   WorkoutPage,
   ProgressPage
 } from '../pages';
-import HomePageLoading from '../pages/HomeP/HomeLandingPage';
+
 import AboutUsPage from '../pages/AboutUsPage/AboutUsPage';
+import HomeLandingPage from '../pages/PaginaPrincipal/HomeLandingPage';
 
 
 // Renombramos a AppRouter para consistencia con la nueva carpeta /router
@@ -37,7 +38,7 @@ const AppRouter = () => {
         <Route path="/recuperar" element={<RecoverAccountPage />} />
         <Route path="/verificar" element={<VerifyCodePage />} />
         <Route path="/cambiarContraseña" element={<ChangePasswordPage />} />
-        <Route path="/PaginaPrincipal" element={<HomePageLoading/>} />
+        <Route path="/PaginaPrincipal" element={<HomeLandingPage/>} />
         <Route path="/Nosotros" element={<AboutUsPage/>} />
       </Route>
 

@@ -10,7 +10,7 @@ const ProfilePage: React.FC = () => {
 
   const userProfile = {
     name: 'Joelyn',
-    email: user?.email,
+    email: user?.email || 'usuario@ejemplo.com',
     memberSince: 'Septiembre 2025',
     age: 28,
     height: 175,
@@ -22,16 +22,25 @@ const ProfilePage: React.FC = () => {
     <div className="profile-page">
       <header className="profile-header">
         <h1 className="profile-main-title">Configuración de la Cuenta</h1>
-        <p className="profile-main-subtitle">Gestiona tu información personal y tus datos de fitness.</p>
+        <p className="profile-main-subtitle">
+          Gestiona tu información personal y tus datos de fitness.
+        </p>
       </header>
 
       <div className="profile-grid">
         {/* Tarjeta de Información de Cuenta */}
-        <div className="profile-section-card">
+        <section className="profile-section-card" aria-labelledby="account-info-title">
           <div className="card-header">
-            <h2 className="card-title">Información de la Cuenta</h2>
-            {/* 👇 Ahora este botón abre el modal correcto */}
-            <Button styleType="secondary" onClick={() => openModal('accountInfo')}>Editar</Button>
+            <h2 id="account-info-title" className="card-title">
+              Información de la Cuenta
+            </h2>
+            <Button 
+              styleType="secondary" 
+              onClick={() => openModal('accountInfo')}
+              aria-label="Editar información de la cuenta"
+            >
+              Editar
+            </Button>
           </div>
           <div className="card-body">
             <div className="info-item">
@@ -47,13 +56,21 @@ const ProfilePage: React.FC = () => {
               <span className="info-value">{userProfile.memberSince}</span>
             </div>
           </div>
-        </div>
+        </section>
 
-        {/* Tarjeta de Datos Físicos (sin cambios) */}
-        <div className="profile-section-card">
+        {/* Tarjeta de Datos Físicos */}
+        <section className="profile-section-card" aria-labelledby="physical-data-title">
           <div className="card-header">
-            <h2 className="card-title">Datos Físicos</h2>
-            <Button styleType="secondary" onClick={() => openModal('physicalData')}>Editar</Button>
+            <h2 id="physical-data-title" className="card-title">
+              Datos Físicos
+            </h2>
+            <Button 
+              styleType="secondary" 
+              onClick={() => openModal('physicalData')}
+              aria-label="Editar datos físicos"
+            >
+              Editar
+            </Button>
           </div>
           <div className="card-body">
             <div className="info-item">
@@ -73,7 +90,7 @@ const ProfilePage: React.FC = () => {
               <span className="info-value">{userProfile.goal}</span>
             </div>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   );

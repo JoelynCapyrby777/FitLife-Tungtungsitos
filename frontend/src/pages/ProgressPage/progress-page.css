@@ -1,158 +1,397 @@
+/* ==================== PROGRESS PAGE - DISEÑO MEJORADO ==================== */
+
+/* Animaciones consistentes con el dashboard */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(139, 92, 246, 0);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+/* ==================== CONTENEDOR PRINCIPAL ==================== */
 .progress-page {
-  max-width: 700px;
-  margin: 6.7rem auto 2.7rem auto;
-  padding: 2.5rem 2rem 2.5rem 2rem;
-  background: var(--color-white, #fff);
-  box-shadow: 0 2px 22px 0 rgba(124,58,237,0.07);
-  border-radius: 18px;
-  animation: fadeIn 0.45s cubic-bezier(.39,.23,.29,1.19);
+  max-width: 970px;
+  margin: calc(var(--header-height) + var(--spacing-xxl)) auto var(--spacing-xxl);
+  padding: var(--spacing-xxl) var(--spacing-xl);
+  background: var(--color-white);
+  box-shadow: var(--shadow-md);
+  border-radius: var(--border-radius-lg);
+  border: 1px solid var(--color-border);
+  animation: fadeIn 0.6s ease-out;
   min-height: 82vh;
   display: flex;
   flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
 }
 
+/* Efecto de fondo sutil */
+.progress-page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.02) 0%, transparent 100%);
+  opacity: 0;
+  transition: var(--transition-base);
+  pointer-events: none;
+  border-radius: var(--border-radius-lg);
+}
+
+/* ==================== HEADER DEL PROGRESO ==================== */
 .progress-header {
   text-align: center;
-  margin-bottom: 2.4rem;
+  margin-bottom: var(--spacing-xxl);
+  animation: slideInUp 0.7s ease-out 0.1s both;
 }
 
 .progress-title {
-  font-size: 2.2rem;
-  font-weight: var(--font-weight-bold, 700);
-  color: var(--color-text-primary, #24124d);
+  font-size: calc(var(--font-size-xl) * 1.1); /* 2.2rem */
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-xs);
+  letter-spacing: -1px;
+  line-height: 1.2;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  position: relative;
+  display: inline-block;
+}
+
+.progress-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light));
+  border-radius: var(--border-radius-pill);
 }
 
 .progress-subtitle {
-  font-size: 1.12rem;
-  color: var(--color-text-secondary, #7c6a99);
-  margin-top: 0.3rem;
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  margin-top: var(--spacing-md);
+  line-height: 1.6;
 }
 
+/* ==================== GRID DE ESTADÍSTICAS ==================== */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 1.6rem;
-  margin-bottom: 2.4rem;
+  gap: var(--spacing-xl);
+  margin-bottom: var(--spacing-xxl);
 }
 
+/* ==================== TARJETAS DE ESTADÍSTICAS ==================== */
 .stat-card {
-  background-color: var(--color-white, #fff);
-  padding: 1.3rem 1.1rem 1.1rem 1.1rem;
-  border-radius: 13px;
+  background-color: var(--color-white);
+  padding: var(--spacing-lg) var(--spacing-md);
+  border-radius: var(--border-radius-md);
   text-align: center;
-  border: 1px solid var(--color-border, #ebe9f7);
-  box-shadow: 0 1px 7px 0 rgba(124,58,237,0.04);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--spacing-sm);
+  transition: var(--transition-base);
+  position: relative;
+  overflow: hidden;
+  animation: scaleIn 0.5s ease-out both;
 }
+
+/* Animación escalonada */
+.stat-card:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.stat-card:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+/* Efecto de fondo sutil */
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.02) 0%, transparent 100%);
+  opacity: 0;
+  transition: var(--transition-base);
+  pointer-events: none;
+}
+
+/* Efecto shimmer */
+.stat-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: var(--transition-base);
+  pointer-events: none;
+}
+
+.stat-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-primary-light);
+  z-index: 2;
+}
+
+.stat-card:hover::before {
+  opacity: 1;
+}
+
+.stat-card:hover::after {
+  left: 100%;
+  transition: left 0.6s ease;
+}
+
+/* ==================== ICONO DE ESTADÍSTICA ==================== */
 .stat-icon {
-  margin-bottom: 0.22rem;
-  color: var(--color-primary, #7c3aed);
+  color: var(--color-primary);
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: var(--spacing-xs);
+  background-color: rgba(139, 92, 246, 0.1);
+  width: 56px;
+  height: 56px;
+  border-radius: var(--border-radius-md);
+  transition: var(--transition-base);
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.08);
+  position: relative;
+  z-index: 1;
 }
 
+.stat-icon::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: var(--border-radius-md);
+  background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary-dark));
+  opacity: 0;
+  transition: var(--transition-base);
+  z-index: -1;
+}
+
+.stat-card:hover .stat-icon {
+  background: rgba(139, 92, 246, 0.15);
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.18);
+}
+
+.stat-card:hover .stat-icon::before {
+  opacity: 0.15;
+}
+
+/* ==================== VALOR Y ETIQUETA DE ESTADÍSTICA ==================== */
 .stat-value {
   display: block;
-  font-size: 2.45rem;
-  font-weight: var(--font-weight-bold, 700);
-  color: var(--color-primary, #7c3aed);
+  font-size: calc(var(--font-size-xl) * 1.2);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-primary);
+  line-height: 1;
 }
 
 .stat-label {
-  font-size: 1.05rem;
-  color: var(--color-text-secondary, #7c6a99);
+  font-size: var(--font-size-base);
+  color: var(--color-text-secondary);
+  line-height: 1.4;
 }
 
+/* ==================== SECCIÓN DE HISTORIAL ==================== */
 .history-section {
-  max-width: 800px;
-  margin: 0 auto;
+  max-width: 100%;
+
 }
 
 .history-title {
-  font-size: 1.18rem;
-  font-weight: var(--font-weight-bold, 700);
-  margin-bottom: 1.1rem;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-text-primary);
+  letter-spacing: -0.5px;
+  position: relative;
+  z-index: 1;
 }
 
+/* ==================== MENSAJE SIN HISTORIAL ==================== */
 .no-history-message {
   text-align: center;
-  color: var(--color-text-secondary, #7c6a99);
-  padding: 1.3rem;
-  background-color: var(--color-white, #fff);
-  border-radius: 13px;
-  box-shadow: 0 1px 7px 0 rgba(124,58,237,0.04);
+  color: var(--color-text-secondary);
+  padding: var(--spacing-xl) var(--spacing-lg);
+  background-color: var(--color-background);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  line-height: 1.6;
+  font-size: var(--font-size-base);
 }
 
+/* ==================== LISTA DE HISTORIAL ==================== */
 .history-list {
   display: flex;
   flex-direction: column;
-  gap: 1.05rem;
+  gap: var(--spacing-md);
 }
 
+/* ==================== ITEMS DE HISTORIAL ==================== */
 .history-item {
   display: flex;
   align-items: center;
-  background-color: var(--color-white, #fff);
-  padding: 1.1rem 1.1rem;
-  border-radius: 13px;
-  border: 1px solid var(--color-border, #ebe9f7);
-  box-shadow: 0 1px 7px 0 rgba(124,58,237,0.04);
+  background-color: var(--color-background);
+  padding: var(--spacing-lg) var(--spacing-lg);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition-base);
+  position: relative;
+  overflow: hidden;
+  animation: scaleIn 0.5s ease-out both;
 }
 
+/* Animación escalonada */
+.history-item:nth-child(1) { animation-delay: 0.4s; }
+.history-item:nth-child(2) { animation-delay: 0.5s; }
+.history-item:nth-child(3) { animation-delay: 0.6s; }
+.history-item:nth-child(4) { animation-delay: 0.7s; }
+.history-item:nth-child(5) { animation-delay: 0.8s; }
+
+/* Efecto de fondo sutil */
+.history-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.02) 0%, transparent 100%);
+  opacity: 0;
+  transition: var(--transition-base);
+  pointer-events: none;
+}
+
+/* Efecto shimmer */
+.history-item::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: var(--transition-base);
+  pointer-events: none;
+}
+
+.history-item:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-primary-light);
+  z-index: 2;
+}
+
+.history-item:hover::before {
+  opacity: 1;
+}
+
+.history-item:hover::after {
+  left: 100%;
+  transition: left 0.6s ease;
+}
+
+/* ==================== ICONO DE HISTORIAL ==================== */
 .history-icon {
-  font-size: 1.33rem;
-  margin-right: 1.15rem;
-  color: var(--color-primary, #7c3aed);
+  color: var(--color-primary);
   display: flex;
   align-items: center;
+  justify-content: center;
+  margin-right: var(--spacing-lg);
+  background-color: rgba(139, 92, 246, 0.1);
+  width: 48px;
+  height: 48px;
+  border-radius: var(--border-radius-md);
+  transition: var(--transition-base);
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.08);
+  position: relative;
+  z-index: 1;
 }
 
-.history-details {
-  display: flex;
-  flex-direction: column;
+.history-icon::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: var(--border-radius-md);
+  background: linear-gradient(135deg, var(--color-primary-light), var(--color-primary-dark));
+  opacity: 0;
+  transition: var(--transition-base);
+  z-index: -1;
 }
 
-.history-workout-title {
-  font-weight: var(--font-weight-bold, 600);
-  font-size: 1.08rem;
-  color: var(--color-text-primary, #24124d);
-}
-
-.history-workout-date {
-  font-size: 0.97rem;
-  color: var(--color-text-secondary, #7c6a99);
-}
-
-@media (max-width: 900px) {
-  .progress-page {
-    max-width: 97vw;
-    padding: 1.5rem 0.7rem 2rem 0.7rem;
-  }
-  .progress-header {
-    margin-bottom: 1.6rem;
-  }
-}
-@media (max-width: 500px) {
-  .progress-page {
-    padding: 0.5rem 0.05rem 1rem 0.05rem;
-    border-radius: 0;
-    box-shadow: none;
-  }
-  .progress-title {
-    font-size: 1.18rem;
-  }
-  .progress-subtitle {
-    font-size: 0.97rem;
-  }
-  .stat-card {
-    padding: 0.7rem 0.5rem;
-  }
-}
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}

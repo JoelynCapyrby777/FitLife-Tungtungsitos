@@ -3,26 +3,24 @@ import "./About-Page.css";
 import { Footer, Header } from "../../components/layout";
 import { Heart, Lightbulb, Users, Award } from "lucide-react";
 
-
-
 const values = [
   {
-    icon: <Heart size={32} color="#7C3AED" />,
+    icon: <Heart size={32} strokeWidth={2} />,
     title: "Pasión",
     desc: "Amamos el fitness y la tecnología. Ponemos el corazón en cada rutina, consejo y línea de código.",
   },
   {
-    icon: <Lightbulb size={32} color="#7C3AED" />,
+    icon: <Lightbulb size={32} strokeWidth={2} />,
     title: "Innovación",
     desc: "Buscamos siempre nuevas formas de motivarte y de acercarte a tus metas con soluciones creativas y útiles.",
   },
   {
-    icon: <Users size={32} color="#7C3AED" />,
+    icon: <Users size={32} strokeWidth={2} />,
     title: "Comunidad",
     desc: "Creemos que juntos llegamos más lejos. Nuestra comunidad es nuestro mayor orgullo y motor de cambio.",
   },
   {
-    icon: <Award size={32} color="#7C3AED" />,
+    icon: <Award size={32} strokeWidth={2} />,
     title: "Resultados",
     desc: "Nos enfocamos en que logres tus objetivos, celebrando cada avance y apoyándote en cada reto.",
   },
@@ -30,9 +28,8 @@ const values = [
 
 const AboutUsPage: React.FC = () => (
   <div>
-    <Header/>
-    <div className="about-root">
-
+    <Header />
+    <main className="about-root">
       {/* HERO/INTRO */}
       <section className="about-hero">
         <h1 className="about-title">Sobre FitLife</h1>
@@ -72,7 +69,12 @@ const AboutUsPage: React.FC = () => (
         <div className="about-values__grid">
           {values.map((v) => (
             <div className="landing-feature-card" key={v.title}>
-              <div className="landing-feature-card__icon">{v.icon}</div>
+              <div className="landing-feature-card__icon">
+                {React.cloneElement(v.icon, {
+                  color: '#7C3AED',
+                  style: { transition: 'all 0.25s ease-in-out' }
+                })}
+              </div>
               <div className="landing-feature-card__title">{v.title}</div>
               <div className="landing-feature-card__desc">{v.desc}</div>
             </div>
@@ -87,12 +89,33 @@ const AboutUsPage: React.FC = () => (
           Escríbenos a <a href="mailto:hola@fitlife.com" className="about-contact__mail">hola@fitlife.com</a> o síguenos en nuestras redes para ser parte de la comunidad FitLife.
         </p>
         <div className="about-contact__socials">
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a>
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">Facebook</a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">Twitter</a>
+          <a 
+            href="https://instagram.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            aria-label="Síguenos en Instagram"
+          >
+            Instagram
+          </a>
+          <a 
+            href="https://facebook.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            aria-label="Síguenos en Facebook"
+          >
+            Facebook
+          </a>
+          <a 
+            href="https://twitter.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            aria-label="Síguenos en Twitter"
+          >
+            Twitter
+          </a>
         </div>
       </section>
-    </div>
+    </main>
     <Footer />
   </div>
 );
