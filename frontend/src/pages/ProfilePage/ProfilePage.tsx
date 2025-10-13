@@ -24,7 +24,7 @@ const ProfilePage: React.FC = () => {
   const loadFirstUser = async () => {
     setLoading(true);
     try {
-      const res: any = await getUserById(1);
+      const res: any = await getUserById(2);
       const payload = res && res.data ? res.data : res;
       setFirstUser(payload);
 
