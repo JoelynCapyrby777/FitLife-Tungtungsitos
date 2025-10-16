@@ -1,0 +1,216 @@
+/* AuthSplitLayout.css - Versión con left completo */
+
+.auth-split-layout {
+  display: flex;
+  min-height: 100vh;
+  width: 100vw;
+  background: var(--color-background);
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.auth-split-layout__left {
+  flex: 1 1 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 220px;
+  min-height: 100vh;
+  background: #7C3AED;
+  color: var(--color-white);
+  padding: var(--spacing-xxl);
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Patrón decorativo de fondo */
+.auth-split-layout__left::before {
+  content: '';
+  position: absolute;
+  top: -0%;
+  right: -40%;
+  width: 190%;
+  height: 190%;
+  background: #7C3AED;
+  background-size: 30px 30px;
+  opacity: 0.3;
+  animation: patternMove 20s linear infinite;
+}
+
+@keyframes patternMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(30px, 30px);
+  }
+}
+
+/* Efecto de blur decorativo */
+.auth-split-layout__left::after {
+  content: '';
+  position: absolute;
+  bottom: -10%;
+  left: -10%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(167, 139, 250, 0.4) 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(60px);
+  animation: float 8s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-30px) translateX(20px);
+  }
+}
+
+.auth-split-layout__right {
+  flex: 1 1 60%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #7C3AED;
+  position: relative;
+  z-index: 1;
+  padding: var(--spacing-xxl);
+  box-sizing: border-box;
+}
+
+/* Card flotante del formulario */
+.auth-split-layout__right > * {
+  background: var(--color-white);
+  border-radius: var(--border-radius-lg);
+  box-shadow:  #7c3aed54;
+  padding: var(--spacing-xl);
+  width: 100%;
+  max-width: 480px;
+}
+
+/* Contenedor del contenido izquierdo */
+.auth-split-layout__left-content {
+  position: relative;
+  z-index: 1;
+  max-width: 500px;
+  text-align: center;
+}
+
+.auth-split-layout__left-content h1 {
+  font-size: 2.5rem;
+  font-weight: var(--font-weight-bold);
+  margin-bottom: var(--spacing-md);
+  line-height: 1.2;
+}
+
+.auth-split-layout__left-content p {
+  font-size: var(--font-size-lg);
+  opacity: 0.95;
+  line-height: 1.6;
+  margin-bottom: var(--spacing-lg);
+}
+
+.auth-split-layout__feature-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-xl);
+  text-align: left;
+}
+
+.auth-split-layout__feature-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: var(--border-radius-md);
+  backdrop-filter: blur(10px);
+  transition: var(--transition-base);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.auth-split-layout__feature-item:hover {
+  background: rgba(0, 0, 0, 0.15);
+  transform: translateX(8px);
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.auth-split-layout__feature-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 900px) {
+  .auth-split-layout {
+    flex-direction: column;
+  }
+
+  .auth-split-layout__left {
+    min-height: 320px;
+    flex: none;
+    padding: var(--spacing-xl) var(--spacing-lg);
+  }
+
+  .auth-split-layout__left::after {
+    width: 200px;
+    height: 200px;
+  }
+
+  .auth-split-layout__left-content h1 {
+    font-size: 2rem;
+  }
+
+  .auth-split-layout__left-content p {
+    font-size: var(--font-size-base);
+  }
+
+  .auth-split-layout__feature-list {
+    display: none; /* Ocultar features en móvil para mejor UX */
+  }
+
+  .auth-split-layout__right {
+    flex: 1 1 auto;
+    min-height: auto;
+    padding: var(--spacing-lg);
+  }
+
+  .auth-split-layout__right > * {
+    box-shadow: none;
+    padding: var(--spacing-lg);
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-split-layout__left {
+    min-height: 220px;
+    padding: var(--spacing-lg) var(--spacing-md);
+  }
+
+  .auth-split-layout__left-content h1 {
+    font-size: 1.75rem;
+  }
+
+  .auth-split-layout__right {
+    padding: var(--spacing-md);
+  }
+
+  .auth-split-layout__right > * {
+    padding: var(--spacing-md);
+  }
+}

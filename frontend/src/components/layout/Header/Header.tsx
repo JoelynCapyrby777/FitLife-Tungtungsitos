@@ -1,23 +1,23 @@
 import React, { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom'; // 👈 1. Importar useNavigate
+import { NavLink, useNavigate } from 'react-router-dom';
 import './Header.css';
 import logo from '../../../assets/logotipo.svg';
 import { useAuth } from '../../../context/AuthContext';
+import { Home, User, LogOut, Menu, X, Bell, Utensils } from 'lucide-react';
 
 const Header: React.FC = () => {
   const { user, logout } = useAuth();
-  const navigate = useNavigate(); // 👈 2. Inicializar el hook de navegación
+  const navigate = useNavigate();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
-  
+
   const handleLogout = () => {
     if (isMenuOpen) toggleMenu();
     logout();
-    navigate('/login'); // 👈 3. Redirigir al login después de cerrar sesión
+    navigate('/login');
   };
 
-  // Función para cerrar el menú al hacer clic en un enlace
   const closeMenu = () => {
     if (isMenuOpen) {
       toggleMenu();
@@ -31,24 +31,77 @@ const Header: React.FC = () => {
         <span className="header__brand-name">FitLife</span>
       </div>
 
-      {user && (
+      {user ? (
         <>
           <nav className="header__nav-desktop">
-            <NavLink to="/" className="header__link">Home</NavLink>
-            <NavLink to="/profile" className="header__link">Perfil</NavLink>
-            <button onClick={handleLogout} className="header__link header__link--button">Cerrar Sesión</button>
+            <NavLink to="/" className="header__link">
+              <Home size={20} style={{ marginRight: 7, verticalAlign: 'middle' }} />
+              Home
+            </NavLink>
+            <NavLink to="/profile" className="header__link">
+              <User size={20} style={{ marginRight: 7, verticalAlign: 'middle' }} />
+              Perfil
+            </NavLink>
+            <NavLink to="/meals" className="header__link">
+              <Utensils size={20} style={{ marginRight: 7, verticalAlign: 'middle' }} />
+              Comidas
+            </NavLink>
+            <NavLink to="/notifications" className="header__link header__notifications-link">
+              <Bell size={20} style={{ marginRight: 7, verticalAlign: 'middle' }} />
+              <span className="visually-hidden">Notificaciones</span>
+            </NavLink>
+            <button onClick={handleLogout} className="header__link header__link--button">
+              <LogOut size={20} style={{ marginRight: 7, verticalAlign: 'middle' }} />
+              Cerrar Sesión
+            </button>
           </nav>
 
           <button className="header__hamburger" onClick={toggleMenu} aria-label="Abrir menú">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            <Menu size={28} />
           </button>
 
           <nav className={`header__nav-mobile ${isMenuOpen ? 'header__nav-mobile--open' : ''}`}>
-            <button className="header__close-button" onClick={toggleMenu} aria-label="Cerrar menú">&times;</button>
-            <NavLink to="/" className="header__link" onClick={closeMenu}>Home</NavLink>
-            <NavLink to="/profile" className="header__link" onClick={closeMenu}>Perfil</NavLink>
-            <button onClick={handleLogout} className="header__link header__link--button">Cerrar Sesión</button>
+            <button className="header__close-button" onClick={toggleMenu} aria-label="Cerrar menú">
+              <X size={32} />
+            </button>
+            <NavLink to="/" className="header__link" onClick={closeMenu}>
+              <Home size={22} style={{ marginRight: 10, verticalAlign: 'middle' }} />
+              Home
+            </NavLink>
+            <NavLink to="/profile" className="header__link" onClick={closeMenu}>
+              <User size={22} style={{ marginRight: 10, verticalAlign: 'middle' }} />
+              Perfil
+            </NavLink>
+            <NavLink to="/meals" className="header__link" onClick={closeMenu}>
+              <Utensils size={22} style={{ marginRight: 10, verticalAlign: 'middle' }} />
+              Comidas
+            </NavLink>
+            <button onClick={handleLogout} className="header__link header__link--button">
+              <LogOut size={22} style={{ marginRight: 10, verticalAlign: 'middle' }} />
+              Cerrar Sesión
+            </button>
           </nav>
+        </>
+      ) : (
+        <>
+          <nav className="header__nav-desktop">
+            <NavLink to="/PaginaPrincipal" className="header__link">
+              Inicio
+            </NavLink>
+            <NavLink to="/Nosotros" className="header__link">
+              Nosotros
+            </NavLink>
+          </nav>
+
+           <div className="header__nav-actions">
+            <NavLink to="/login" className="header__link header__link--button">
+              Iniciar sesión
+            </NavLink>
+            <NavLink to="/register" className="header__link header__link--register">
+              Regístrate
+            </NavLink>
+          </div>
+
         </>
       )}
     </header>

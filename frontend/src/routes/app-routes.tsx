@@ -21,6 +21,10 @@ import {
   ProgressPage
 } from '../pages';
 
+import AboutUsPage from '../pages/AboutUsPage/AboutUsPage';
+import HomeLandingPage from '../pages/PaginaPrincipal/HomeLandingPage';
+
+
 // Renombramos a AppRouter para consistencia con la nueva carpeta /router
 const AppRouter = () => {
   return (
@@ -34,6 +38,8 @@ const AppRouter = () => {
         <Route path="/recuperar" element={<RecoverAccountPage />} />
         <Route path="/verificar" element={<VerifyCodePage />} />
         <Route path="/cambiarContraseña" element={<ChangePasswordPage />} />
+        <Route path="/PaginaPrincipal" element={<HomeLandingPage/>} />
+        <Route path="/Nosotros" element={<AboutUsPage/>} />
       </Route>
 
       {/* --- ZONA VIP (PRIVADA) --- */}
@@ -44,6 +50,7 @@ const AppRouter = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="profile" element={<ProfilePage />} />
+          
           <Route path="routines" element={<RoutinesPage />} />
           <Route path="routines/:routineId" element={<RoutineDetailPage />} />
           <Route path="progress" element={<ProgressPage />} />

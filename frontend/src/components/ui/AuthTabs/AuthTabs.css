@@ -1,0 +1,38 @@
+
+.auth-tabs {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto 1.5rem auto;
+  border-radius: 999px; /* pill style */
+  background: rgba(124, 58, 237, 0.1); /* violeta suave transparente */
+  padding: 4px;
+  width: 100%;
+  max-width: 340px;
+  backdrop-filter: blur(6px); /* efecto glass */
+  border: 1px solid rgba(124, 58, 237, 0.2);
+}
+
+.auth-tab {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #4b5563; /* gris neutro */
+  background: transparent;
+  border: none;
+  border-radius: 999px; /* pill individual */
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.auth-tab:hover {
+  background: rgba(124, 58, 237, 0.08);
+  color: #1f2937;
+}
+
+.auth-tab.active {
+  background: linear-gradient(135deg, #7C3AED, #9333ea);
+  color: #ffffff;
+  box-shadow: 0 3px 8px rgba(124, 58, 237, 0.4);
+  transform: translateY(-1px);
+}

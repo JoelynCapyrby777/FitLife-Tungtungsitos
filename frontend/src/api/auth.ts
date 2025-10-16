@@ -1,3 +1,5 @@
+import { number, string } from "prop-types";
+
 // La URL base de tu API.
 const BASE_URL = 'http://localhost:3000';
 
@@ -32,7 +34,7 @@ export const loginUser = async (email, password) => {
  */
 export const registerUser = async (userData) => {
   try {
-    const response = await fetch(`${BASE_URL}/user`, {
+    const response = await fetch(`${BASE_URL}/users`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(userData), // Se envía el objeto completo
@@ -49,3 +51,48 @@ export const registerUser = async (userData) => {
   }
 };
 
+export const getUserById = async (id: string | number) => {
+  try {
+    const response = await fetch(`${BASE_URL}/users/${id}`, {
+      method: 'GET',
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.message || 'No se pudo obtener el usuario.');
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Error al obtener el usuario:', error);
+    throw error;
+  }
+};
+
+export const UpdateUserById = async (id: string | number, payload: Record<string, unknown>) => {
+  try {
+    const response = await fetch(`${BASE_URL}/users/${id}`, {
+      method: 'PUT', 
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+
+    const text = await response.text();
+    let data: any = null;
+    try {
+      data = text ? JSON.parse(text) : null;
+    } catch {
+      throw new Error(`Respuesta inválida del servidor al actualizar usuario. Raw: ${text}`);
+    }
+
+    if (!response.ok) {
+      throw new Error((data && data.message) || `Error ${response.status} al actualizar el usuario.`);
+    }
+
+    // si la API devuelve { success, data } devolvemos data, si no devolvemos todo
+    return data && data.data ? data.data : data;
+  } catch (error) {
+    console.error('Error al actualizar el usuario:', error);
+    throw error;
+  }
+};

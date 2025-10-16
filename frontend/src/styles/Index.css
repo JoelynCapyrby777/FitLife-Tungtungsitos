@@ -8,29 +8,31 @@
 */
 :root {
   /* === PALETA DE COLORES === */
-  
-  /* Paleta de Colores Verdes (NUEVA) */
-  --color-primary: #4CAF50; /* Verde principal, vibrante y saludable */
-  --color-primary-light: #81C784; /* Verde más claro para acentos sutiles */
-  --color-primary-dark: #388E3C;  /* Verde oscuro para estados hover */
+  /* Colores Primarios */
+--color-primary: #8B5CF6;      /* Púrpura vibrante - creatividad y lujo */
+--color-primary-light: #A78BFA; /* Púrpura lavanda para acentos */
+--color-primary-dark: #7C3AED;  /* Púrpura intenso para hover *
 
-  /* Colores de Feedback (Ajustados al tema) */
-  --color-success: #2E7D32;        /* Un verde más profundo para éxito */
-  --color-error: #D32F2F;          /* Rojo clásico para errores */
-  --color-warning: #FFA000;        /* Naranja/Ámbar para advertencias */
+--color-brand-secondary: #1F2937; /* Gris grafito - minimalista */
 
-  /* Paleta de grises y texto */
-  --color-text-primary: #212529; /* Casi negro para texto principal */
-  --color-text-secondary: #6c757d; /* Gris para subtítulos y texto de apoyo */
-  --color-border: #dee2e6;       /* Gris claro para bordes */
-  --color-background: #f8f9fa;   /* Gris muy claro para fondos de página */
-  --color-white: #fff;
-  --color-black: #000;
+/* Texto y Neutros */
+--color-text-primary: #111827;   /* Negro suave */
+--color-text-secondary: #6B7280; /* Gris neutro */
+--color-border: #E5E7EB;         /* Gris plata */
+--color-background: #F9FAFB;     /* Blanco humo */
+--color-white: #FFFFFF;
+--color-black: #000000;
+/* Colores de Feedback (Ajustados al tema) */
+--color-success: #2E7D32;       /* Verde profundo y claro para mensajes de éxito */
+--color-error: #D32F2F;         /* Rojo estándar y accesible para errores */
+--color-warning: #FFA000;       /* Naranja/Ámbar para advertencias importantes */
+
+
 
 
   /* === TIPOGRAFÍA === */
-  --font-family-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --font-family-mono: 'SFMono-Regular', Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  --font-family-sans:  'Open Sans', sans-serif;
+  --font-family-mono:  monospace;
 
   --font-size-base: 1rem;      /* 16px por defecto */
   --font-size-sm: 0.875rem;    /* 14px */
