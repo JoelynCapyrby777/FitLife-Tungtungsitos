@@ -1,11 +1,3 @@
-/* 
-  ============================================
-  HOME LANDING PAGE - REFACTORIZADO CON SISTEMA DE DISEÑO
-  ============================================
-  Incluye: variables del sistema, animaciones, gradientes y responsive optimizado
-*/
-
-/* ==================== ANIMACIONES ==================== */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -21,17 +13,6 @@
   from {
     opacity: 0;
     transform: translateX(-30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translateX(30px);
   }
   to {
     opacity: 1;
@@ -72,31 +53,35 @@
 /* ==================== HERO SECTION ==================== */
 .landing-hero {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  max-width: var(--container-width);
-  margin: 0 auto;
-  gap: var(--spacing-xxl);
+  align-items: center;
+  margin: auto 1.5rem ;
+  gap: var(--spacing-xx2);
   padding: calc(var(--header-height) + var(--spacing-xxl)) var(--spacing-xxl) var(--spacing-xxl);
 }
 
+
 .landing-hero__info {
-  flex: 1.4;
-  padding: var(--spacing-xxl) 0;
+  padding: var(--spacing-lg) 0;
   animation: fadeInLeft 0.8s ease-out;
 }
 
 .landing-hero__title {
-  font-size: calc(var(--font-size-xl) * 1.5); /* 3rem */
+  font-size: calc(var(--font-size-xl) * 1.5);
   font-weight: var(--font-weight-bold);
-  line-height: 1.2;
+  line-height: 1.3;
   margin-bottom: var(--spacing-lg);
   color: var(--color-text-primary);
-  background: linear-gradient(135deg, var(--color-text-primary) 0%, var(--color-primary) 100%);
+  
+  
+} 
+
+.landing-hero-sec {
+  background:  linear-gradient(360deg, var(--color-text-primary) , var(--color-primary) 100%);  
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
 
 .landing-hero__desc {
   font-size: var(--font-size-lg);
@@ -152,53 +137,30 @@
 }
 
 .landing-hero__image {
-  padding: var(--spacing-xxl) 0;
-  flex: 1;
   display: flex;
   align-items: flex-start;
-  justify-content: center;
-  min-width: 280px;
-  animation: fadeInRight 0.8s ease-out;
+  padding: 1rem;
+  
 }
 
 .landing-hero__image-placeholder {
-  width: 280px;
-  height: 380px;
-  background: linear-gradient(135deg, var(--color-background) 0%, rgba(139, 92, 246, 0.05) 100%);
+  width: 560px;
+  height: 430px;
   border-radius: var(--border-radius-lg);
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid var(--color-border);
   box-shadow: var(--shadow-md);
-  transition: var(--transition-base);
   position: relative;
   overflow: hidden;
 }
 
-.landing-hero__image-placeholder::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
-  animation: pulse 3s ease-in-out infinite;
-}
-
-.landing-hero__image-placeholder:hover {
-  border-color: var(--color-primary-light);
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-lg);
-}
 
 
-/* ==================== FEATURES SECTION ==================== */
+
+/*  Parte de porque fitlife  */
 .landing-features {
-  max-width: var(--container-width);
-  margin: var(--spacing-xxl) auto 0 auto;
-  padding: 0 var(--spacing-xxl);
+  margin: var(--spacing-md) 3.5rem;
   animation: fadeInUp 0.8s ease-out 0.2s both;
 }
 
@@ -227,15 +189,15 @@
 
 .landing-features__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
   gap: var(--spacing-xl);
   margin-bottom: var(--spacing-xl);
 }
 
 .landing-feature-card {
+  align-self: safe;
   background: var(--color-white);
   border-radius: var(--border-radius-lg);
-  padding: var(--spacing-xl) var(--spacing-lg);
   box-shadow: var(--shadow-md);
   transition: var(--transition-base);
   border: 1px solid var(--color-border);
@@ -245,7 +207,7 @@
 }
 
 .landing-feature-card::before {
-  content: '';
+  
   position: absolute;
   top: 0;
   left: 0;
@@ -267,8 +229,8 @@
 }
 
 .landing-feature-card__icon {
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   background: rgba(139, 92, 246, 0.1);
   border-radius: var(--border-radius-md);
   display: flex;
@@ -304,11 +266,11 @@
 }
 
 
-/* ==================== HOW IT WORKS SECTION ==================== */
+/*Como funciona*/
 .landing-how {
-  max-width: var(--container-width);
-  margin: calc(var(--spacing-xxl) * 1.5) auto 0 auto;
-  padding: 0 var(--spacing-xxl);
+  max-width: 100%;
+  margin: calc(var(--spacing-lg) * 1.3);
+  padding: 0 var(--spacing-lg);
   animation: fadeInUp 0.8s ease-out 0.4s both;
 }
 
@@ -344,7 +306,7 @@
 .landing-step {
   display: flex;
   align-items: center;
-  gap: var(--spacing-xl);
+  gap: var(--spacing-lg);
   background: var(--color-white);
   border-radius: var(--border-radius-lg);
   padding: var(--spacing-xl);
@@ -425,11 +387,11 @@
 }
 
 
-/* ==================== TESTIMONIALS SECTION ==================== */
+/* Comentarios */
 .landing-testimonials {
-  max-width: var(--container-width);
-  margin: calc(var(--spacing-xxl) * 1.5) auto 0 auto;
-  padding: 0 var(--spacing-xxl);
+  max-width: 100%;
+  margin: calc(var(--spacing-lg) * 1.5) ;
+  padding: 0 var(--spacing-lg);
   animation: fadeInUp 0.8s ease-out 0.6s both;
 }
 
@@ -547,10 +509,10 @@
 }
 
 
-/* ==================== CTA SECTION ==================== */
+/* Seccion de cambio  */
 .landing-cta {
-  max-width: var(--container-width);
-  margin: var(--spacing-xl) auto;
+  max-width: 100%;
+  margin: var(--spacing-xx1) ;
   padding: 0 var(--spacing-xxl);
   animation: scaleIn 0.6s ease-out 0.8s both;
 }

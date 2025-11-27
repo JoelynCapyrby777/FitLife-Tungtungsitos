@@ -19,7 +19,7 @@
   justify-content: center;
   min-width: 220px;
   min-height: 100vh;
-  background: #7C3AED;
+  background: #2A5F2A;
   color: var(--color-white);
   padding: var(--spacing-xxl);
   box-sizing: border-box;
@@ -35,7 +35,7 @@
   right: -40%;
   width: 190%;
   height: 190%;
-  background: #7C3AED;
+  background: #2A5F2A;
   background-size: 30px 30px;
   opacity: 0.3;
   animation: patternMove 20s linear infinite;
@@ -80,7 +80,7 @@
   justify-content: center;
   min-width: 320px;
   min-height: 100vh;
-  background: #7C3AED;
+  background: #2A5F2A;
   position: relative;
   z-index: 1;
   padding: var(--spacing-xxl);

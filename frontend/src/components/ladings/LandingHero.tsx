@@ -5,7 +5,7 @@ const LandingHero: React.FC = () => (
   <section className="landing-hero">
     <div className="landing-hero__info">
       <h1 className="landing-hero__title">
-        Alcanza tus metas con rutinas personalizadas
+        Alcanza tus metas con <samp className="landing-hero-sec">rutinas personalizadas</samp>
       </h1>
       <p className="landing-hero__desc">
         Transforma tu cuerpo y mente con planes de entrenamiento diseñados específicamente para ti.
@@ -22,7 +22,7 @@ const LandingHero: React.FC = () => (
     <div className="landing-hero__image">
       <div className="landing-hero__image-placeholder">
         <img
-          src="https://cdn.pixabay.com/photo/2023/06/09/01/56/desi-gym-fitness-8050666_960_720.jpg"
+          src="https://cdn.pixabay.com/photo/2019/01/29/13/51/training-3962421_960_720.jpg"
           alt="Entrenamiento FitLife"
           className="landing-hero__img"
           style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: 'inherit' }}

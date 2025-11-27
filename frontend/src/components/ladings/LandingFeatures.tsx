@@ -3,32 +3,32 @@ import { Dumbbell, Calendar, TrendingUp, Target, Users, Award } from "lucide-rea
 
 const features = [
   {
-    icon: <Dumbbell size={32} color="#7C3AED" />,
+    icon: <Dumbbell size={32} color="#2A5F2A" />,
     title: "Rutinas Personalizadas",
     desc: "Crea planes de entrenamiento adaptados a tu nivel, objetivos y disponibilidad de tiempo. Cada rutina está diseñada para maximizar tus resultados.",
   },
   {
-    icon: <Calendar size={32} color="#7C3AED" />,
+    icon: <Calendar size={32} color="#2A5F2A" />,
     title: "Seguimiento Diario",
     desc: "Registra tus entrenamientos, monitorea tu progreso y mantén un calendario organizado. Visualiza tu evolución con estadísticas detalladas.",
   },
   {
-    icon: <TrendingUp size={32} color="#7C3AED" />,
+    icon: <TrendingUp size={32} color="#2A5F2A" />,
     title: "Progreso Medible",
     desc: "Analiza tu evolución con gráficas y métricas precisas. Observa cómo mejoras semana a semana y celebra cada logro alcanzado.",
   },
   {
-    icon: <Target size={32} color="#7C3AED" />,
+    icon: <Target size={32} color="#2A5F2A" />,
     title: "Metas Claras",
     desc: "Define objetivos específicos y alcanzables. Nuestro sistema te guiará paso a paso hacia tu transformación física.",
   },
   {
-    icon: <Users size={32} color="#7C3AED" />,
+    icon: <Users size={32} color="#2A5F2A" />,
     title: "Comunidad Activa",
     desc: "Conéctate con otros usuarios, comparte tu progreso y encuentra motivación. Juntos llegamos más lejos.",
   },
   {
-    icon: <Award size={32} color="#7C3AED" />,
+    icon: <Award size={32} color="#2A5F2A" />,
     title: "Logros y Recompensas",
     desc: "Gana insignias y desbloquea recompensas mientras completas tus objetivos. Cada esfuerzo cuenta y se reconoce.",
   },

@@ -32,7 +32,7 @@
   appearance: none;
 }
 .form-select:focus {
-  border-color: var(--color-primary, #7c3aed);
+  border-color: var(--color-primary);
   outline: none;
 }
 @media (max-width: 800px) {

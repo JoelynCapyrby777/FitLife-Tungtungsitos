@@ -23,6 +23,7 @@ import {
 
 import AboutUsPage from '../pages/AboutUsPage/AboutUsPage';
 import HomeLandingPage from '../pages/PaginaPrincipal/HomeLandingPage';
+import ContactPage from '../pages/Concact/ContactPage';
 
 
 // Renombramos a AppRouter para consistencia con la nueva carpeta /router
@@ -33,13 +34,14 @@ const AppRouter = () => {
       {/* El guardia PublicRoute protege estas rutas.
           Si ya iniciaste sesión, te redirigirá al Home. */}
       <Route element={<PublicRoute />}>
+        <Route path="/PaginaPrincipal" element={<HomeLandingPage/>} />
+        <Route path="/Nosotros" element={<AboutUsPage/>} />
+        <Route path='Contactanos' element={<ContactPage/>} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/recuperar" element={<RecoverAccountPage />} />
         <Route path="/verificar" element={<VerifyCodePage />} />
         <Route path="/cambiarContraseña" element={<ChangePasswordPage />} />
-        <Route path="/PaginaPrincipal" element={<HomeLandingPage/>} />
-        <Route path="/Nosotros" element={<AboutUsPage/>} />
       </Route>
 
       {/* --- ZONA VIP (PRIVADA) --- */}

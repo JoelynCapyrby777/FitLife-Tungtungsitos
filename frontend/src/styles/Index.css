@@ -9,11 +9,11 @@
 :root {
   /* === PALETA DE COLORES === */
   /* Colores Primarios */
---color-primary: #8B5CF6;      /* Púrpura vibrante - creatividad y lujo */
---color-primary-light: #A78BFA; /* Púrpura lavanda para acentos */
---color-primary-dark: #7C3AED;  /* Púrpura intenso para hover *
+--color-primary: #58C758;      /* Púrpura vibrante - creatividad y lujo */
+--color-primary-light: #469F46; /* Púrpura lavanda para acentos */
+--color-primary-dark: #2A5F2A;  /* Púrpura intenso para hover *
 
---color-brand-secondary: #1F2937; /* Gris grafito - minimalista */
+--color-brand-secondary: #1F2937; 
 
 /* Texto y Neutros */
 --color-text-primary: #111827;   /* Negro suave */

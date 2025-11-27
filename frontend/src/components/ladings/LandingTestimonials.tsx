@@ -20,6 +20,16 @@ const testimonials = [
         quote: `"Perfecto para mi estilo de vida ocupado. Puedo entrenar cuando tengo tiempo y la app se adapta a mi horario. Resultados garantizados."`,
         name: "Jorge Mendoza",
         role: "Profesional ocupado",
+    },
+    {
+        quote: "Nunca había logrado ser constante hasta ahora. Las rutinas son dinámicas y ver mi progreso semana a semana me mantiene súper motivada.",
+        name: "Sofía Herrera",
+        role: "Estudiante universitaria",
+    },
+    {
+        quote: "La flexibilidad de elegir mis comidas y ver cómo impactan en mi rendimiento es increíble. Es como tener un entrenador personal en el bolsillo.",
+        name: "Miguel Ángel Torres",
+        role: "Deportista aficionado",
     }
 ];
 

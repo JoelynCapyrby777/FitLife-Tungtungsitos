@@ -71,7 +71,7 @@ const AboutUsPage: React.FC = () => (
             <div className="landing-feature-card" key={v.title}>
               <div className="landing-feature-card__icon">
                 {React.cloneElement(v.icon, {
-                  color: '#7C3AED',
+                  color: '#2A5F2A',
                   style: { transition: 'all 0.25s ease-in-out' }
                 })}
               </div>
